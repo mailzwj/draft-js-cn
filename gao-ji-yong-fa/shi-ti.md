@@ -47,7 +47,7 @@ const contentStateWithLink = Modifier.applyEntity(
 const newEditorState = EditorState.push(editorState, { currentContent: contentStateWithLink });
 ```
 
-对于给定的文本范围，则可以通过在`ContentBlock`对象上使用 `getEntityAt()`方法来提取其关联的实体密钥，从而传递目标偏移值。
+对于给定的文本范围，则可以通过在`ContentBlock`对象上使用 `getEntityAt()`方法来提取其关联的实体key，从而传递目标偏移值。
 
 ```js
 const blockWithLinkAtBeginning = contentState.getBlockForKey('...');
