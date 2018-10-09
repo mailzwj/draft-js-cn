@@ -4,4 +4,6 @@
   * [概要](gai-yao.md)
   * [基础API](ji-chu-api.md)
   * [样式](wai-guan.md)
+* [高级用法](gao-ji-yong-fa.md)
+  * [实体](gao-ji-yong-fa/shi-ti.md)
 
