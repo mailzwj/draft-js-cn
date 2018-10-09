@@ -16,11 +16,11 @@
 
 * **type** : 一个字符串，表示它是什么样的实体，例如`'LINK'`，`'MENTION'`，`'PHOTO'`。
 * **mutability** : 不要将不可变性与`immutable-js`混淆，此属性表示在编辑器中编辑文本范围时，使用此实体对象注释的一系列文本的行为。 这在下面更详细地讨论。
-* **data** : 包含实体元数据的可选对象。 例如，`“LINK”`实体可能包含包含该链接的`href`值的数据对象。类型，替换， 元数据的对象
+* **data** : 包含实体元数据的可选对象。 例如，`“LINK”`实体对象可能包含该链接的`href`的值。
 
 所有实体都存储在ContentState记录中。所有的实体通过`ContentState` key 引用， 并且React组件用于描述替换范围。（我们目前不赞成使用以前的API访问实体;请参阅[问题＃839](https://github.com/facebook/draft-js/issues/839)。）
 
-使用[装饰器](https://draftjs.org/docs/advanced-topics-decorators.html)或[自定义块组件](https://draftjs.org/docs/advanced-topics-block-components.html)，您可以根据实体元数据向编辑器添加丰富的渲染。
+使用[装饰器](https://draftjs.org/docs/advanced-topics-decorators.html)或[自定义块组件](https://draftjs.org/docs/advanced-topics-block-components.html)，您可以根据实体元数据向编辑器添加丰富的渲染样式。
 
 ## 创建和检索实体
 
