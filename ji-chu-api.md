@@ -27,7 +27,7 @@ class MyInput extends React.Component {
 }
 ```
 
-顶级组件可以通过该值state属性来保持对输入状态的控制。
+顶级组件可以通过该state属性来保持对输入状态的控制。
 
 ## 控制富文本
 
