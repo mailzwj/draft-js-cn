@@ -16,5 +16,53 @@
 
 修饰器存储在`EditorState`记录中。当创建一个新的`EditorState`对象（例如：`EditorState.createEmpty()`）的时候，可以选择提供修饰器。
 
+> 基于钩子
+>
+> 当Draft编辑器中的内容更改时，生成的`EditorState`对象将使用其装饰器评估新的`ContentState`，并标识要进行装饰的范围。 此时形成了一个完整的块，修饰器和内联样式，作为我们渲染输出的基础。
+>
+> 通过这种方式，我们始终保证随着内容的改变，渲染的修饰与我们的`EditorState`同步。
+
+例如，在“Tweet”编辑器示例中，我们使用一个`CompositeDecorator`来搜索@-handle字符串以及主题标签字符串：
+
+```js
+const compositeDecorator = new CompositeDecorator([
+  {
+    strategy: handleStrategy,
+    component: HandleSpan,
+  },
+  {
+    strategy: hashtagStrategy,
+    component: HashtagSpan,
+  },
+]);
+```
+
+该复合修饰器将首先扫描给定的文本块以获取@-handle匹配，然后对于hashtag匹配进行扫描。
+
+```js
+// Note: these aren't very good regexes, don't use them!
+const HANDLE_REGEX = /\@[\w]+/g;
+const HASHTAG_REGEX = /\#[\w\u0590-\u05ff]+/g;
+
+function handleStrategy(contentBlock, callback, contentState) {
+  findWithRegex(HANDLE_REGEX, contentBlock, callback);
+}
+
+function hashtagStrategy(contentBlock, callback, contentState) {
+  findWithRegex(HASHTAG_REGEX, contentBlock, callback);
+}
+
+function findWithRegex(regex, contentBlock, callback) {
+  const text = contentBlock.getText();
+  let matchArr, start;
+  while ((matchArr = regex.exec(text)) !== null) {
+    start = matchArr.index;
+    callback(start, start + matchArr[0].length);
+  }
+}
+```
+
+策略函数执行提供的回调并传入匹配的文本范围的起始和结束值。
+
 
 
