@@ -68,7 +68,25 @@ function findWithRegex(regex, contentBlock, callback) {
 
 对于您修饰的文本范围，您必须定义一个用于渲染它们的React组件。 这些往往是一个使用 CSS 或 style 的 span 元素。
 
+在我们当前的示例中，名为`HandleSpan`和`HashtagSpan`的`CompositeDecorator`对象作为修饰器使用的组件。
 
+这些只是基本的无状态组件：
+
+```js
+const HandleSpan = (props) => {
+  return <span {...props} style={styles.handle}>{props.children}</span>;
+};
+
+const HashtagSpan = (props) => {
+  return <span {...props} style={styles.hashtag}>{props.children}</span>;
+};
+```
+
+修饰器将从`props`中接收各种各样的元数据片段。包括一个`contentState`、`entityKey`（如果有）、`blockKey`的拷贝。修饰器组件可使用的完整props列表，请查阅[DraftDecoratorComponentProps type](https://github.com/facebook/draft-js/blob/master/src/model/decorators/DraftDecorator.js)。
+
+注意，`props.children`被传递到渲染中输出。 这样做是为了确保文本在装饰的范围内呈现。
+
+您可以使用相同的方法进行链接，如我们的[链接示例](https://github.com/facebook/draft-js/tree/master/examples/draft-0-10-0/link)所示。
 
 
 
