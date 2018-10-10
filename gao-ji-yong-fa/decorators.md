@@ -88,5 +88,11 @@ const HashtagSpan = (props) => {
 
 您可以使用相同的方法进行链接，如我们的[链接示例](https://github.com/facebook/draft-js/tree/master/examples/draft-0-10-0/link)所示。
 
+## 超越组合修饰器
+
+提供给`EditorState`使用的修饰器，只需要满足符合类型定义的[DraftDecoratorType](https://github.com/facebook/draft-js/blob/master/src/model/decorators/DraftDecoratorType.js)。这意味着您可以创建任何您想要的装饰器类，只要它们与预定类型相匹配，则不受`CompositeDecorator`的限制。
+
+## 设置新的修饰器
+
 
 
