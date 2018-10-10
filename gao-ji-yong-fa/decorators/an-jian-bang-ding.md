@@ -12,5 +12,7 @@
 
 比如，`Ctrl+Z`\(Win\)和`Cmd+Z`\(OSX\) 映射到`'undo'`命令，它控制处理程序执行`EditorState.undo()`。
 
+## 自定义
+
 
 
