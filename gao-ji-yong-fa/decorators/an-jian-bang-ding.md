@@ -14,5 +14,29 @@
 
 ## 自定义
 
+你可能会提供自己的事件绑定函数，来扩展自定义编辑器命令。
 
+将`getDefaultKeyBinding`作为自定义函数处理失败的备选方案是一种被推荐的做法，这样可以让你的编辑器在默认命令中受益。
+
+使用自定义命令字符串，你可以实现`handleKeyCommand` prop函数，它允许你映射命令字符串到你期望的行为上。如果`handleKeyCommand`返回`'handled'`，则说明命令已经被处理。反之，如果返回`'not-handled'`，则说明处理失败。
+
+## 举例
+
+假设我们有一个编辑器，它应该有一个“保存”机制来定期将您的内容保存到服务器上，作为Draft的备份。
+
+首先，我们来定义我们的键绑定功能：
+
+```js
+import {getDefaultKeyBinding, KeyBindingUtil} from 'draft-js';
+const {hasCommandModifier} = KeyBindingUtil;
+
+function myKeyBindingFn(e: SyntheticKeyboardEvent): string {
+  if (e.keyCode === 83 /* `S` key */ && hasCommandModifier(e)) {
+    return 'myeditor-save';
+  }
+  return getDefaultKeyBinding(e);
+}
+```
+
+我们的函数接收一个键盘事件参数，
 
