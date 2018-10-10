@@ -40,3 +40,43 @@ function myKeyBindingFn(e: SyntheticKeyboardEvent): string {
 
 我们的函数接收一个键盘事件参数，然后我们检查它是否与我们的标准匹配：它必须是`'S'`键，并且必须有一个命令修饰器。例如，OSX系统的`'Cmd'`键，或Windows系统的`'Ctrl'`键等。
 
+如果是一个匹配的命令，返回命令名称字符串，否则，降级使用默认命令。
+
+在我们的编辑器组件中，我们可以通过`handleKeyCommand` prop来使用命令：
+
+```js
+import {Editor} from 'draft-js';
+class MyEditor extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.handleKeyCommand = this.handleKeyCommand.bind(this);
+  }
+  // ...
+
+  handleKeyCommand(command: string): DraftHandleValue {
+    if (command === 'myeditor-save') {
+      // Perform a request to save your contents, set
+      // a new `editorState`, etc.
+      return 'handled';
+    }
+    return 'not-handled';
+  }
+
+  render() {
+    return (
+      <Editor
+        editorState={this.state.editorState}
+        handleKeyCommand={this.handleKeyCommand}
+        keyBindingFn={myKeyBindingFn}
+        ...
+      />
+    );
+  }
+}
+```
+
+`'myeditor-save'`可以用于我们的自定义行为，只需要返回`'handled'`来通知编辑器命令已经被处理就可以了。
+
+其他情况下返回`'not-hadnled'`，默认命令可以处理默认行为。
+
