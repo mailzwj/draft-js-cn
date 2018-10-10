@@ -38,5 +38,5 @@ function myKeyBindingFn(e: SyntheticKeyboardEvent): string {
 }
 ```
 
-我们的函数接收一个键盘事件参数，
+我们的函数接收一个键盘事件参数，然后我们检查它是否与我们的标准匹配：它必须是`'S'`键，并且必须有一个命令修饰器。例如，OSX系统的`'Cmd'`键，或Windows系统的`'Ctrl'`键等。
 
