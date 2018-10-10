@@ -7,4 +7,5 @@
 * [高级用法](gao-ji-yong-fa.md)
   * [实体](gao-ji-yong-fa/shi-ti.md)
   * [v0.10 API迁移](gao-ji-yong-fa/v010-apiqian-yi.md)
+  * [修饰器](gao-ji-yong-fa/decorators.md)
 
