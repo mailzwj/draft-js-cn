@@ -94,5 +94,23 @@ const HashtagSpan = (props) => {
 
 ## 设置新的修饰器
 
+当然，在正常状态传播期间，通过不可变的方式，可以在`EditorState`上设置新的修饰器值。
 
+这意味着在您的应用程序工作流程中，如果您的修饰器无效或需要修改，您可以创建一个新的修饰器对象（或使用`null`删除所有修饰）和`EditorState.set()`来设置新的装饰器。
+
+例如，如果由于某种原因，我们希望在用户与编辑器交互时禁用@-handle修饰的创建，那么执行以下操作会很好：
+
+```js
+function turnOffHandleDecorations(editorState) {
+  const onlyHashtags = new CompositeDecorator([{
+    strategy: hashtagStrategy,
+    component: HashtagSpan,
+  }]);
+  return EditorState.set(editorState, {decorator: onlyHashtags});
+}
+```
+
+将使用新修饰器重新评估此`editorState`的`ContentState`，并且@-handle修饰将不再存在于下一个渲染过程中。
+
+同样，由于不可变对象上数据的持久性，这在内存中仍然是有效的。
 
