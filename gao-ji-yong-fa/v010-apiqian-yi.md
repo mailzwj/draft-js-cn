@@ -81,3 +81,64 @@ const compositeDecorator = new CompositeDecorator([
 
 注意ExampleTokenComponent将接收一个contentState prop。
 
+为什么现在将'contentState'纳入修饰器策略？因为，如果我们的策略是从内容中找到某些实体，那么我们可能需要它：
+
+```js
+const mutableEntityStrategy = function(contentBlock, callback, contentState) {
+  contentBlock.findEntityRanges(
+    (character) => {
+      const entityKey = character.getEntity();
+      if (entityKey === null) {
+        return false;
+      }
+      // To look for certain types of entities,
+      // or entities with a certain mutability,
+      // you may need to get the entity from contentState.
+      // In this example we get only mutable entities.
+      return contentState.getEntity(entityKey).getMutability() === 'MUTABLE';
+    },
+    callback,
+  );
+};
+```
+
+## 查找实体的修饰器策略
+
+### 旧语法
+
+```js
+function findLinkEntities(contentBlock, callback) {
+  contentBlock.findEntityRanges(
+    (character) => {
+      const entityKey = character.getEntity();
+      return (
+        entityKey !== null &&
+        Entity.get(entityKey).getType() === 'LINK'
+      );
+    },
+    callback,
+  );
+};
+```
+
+### 新语法
+
+```js
+function findLinkEntities(contentBlock, callback, contentState) {
+  contentBlock.findEntityRanges(
+    (character) => {
+      const entityKey = character.getEntity();
+      return (
+        entityKey !== null &&
+        contentState.getEntity(entityKey).getType() === 'LINK'
+      );
+    },
+    callback,
+  );
+};
+```
+
+## 更多信息
+
+更多信息请查看[最新的示例](https://github.com/facebook/draft-js/tree/master/examples/draft-0-10-0)。
+
