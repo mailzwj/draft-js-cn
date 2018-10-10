@@ -64,5 +64,11 @@ function findWithRegex(regex, contentBlock, callback) {
 
 策略函数执行提供的回调并传入匹配的文本范围的起始和结束值。
 
+## 修饰器组件
+
+对于您修饰的文本范围，您必须定义一个用于渲染它们的React组件。 这些往往是一个使用 CSS 或 style 的 span 元素。
+
+
+
 
 
