@@ -93,5 +93,7 @@ _unstyled块的别名用法示例：_
 
 ## 自定义块包装器
 
+一般情况下，html元素被用来包装块类型。但是`blockRenderMap`也可以使用React组件来包装`EditorBlock`。
 
+当粘贴或使用[convertFromHTML](https://draftjs.org/docs/api-reference-data-conversion.html#convertfromhtml)的时候，html将被扫描为对应的标签元素。当在`blockRenderMap`上定义了特殊类型块时
 
