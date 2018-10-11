@@ -33,5 +33,5 @@
   * [RichUtils](richutils.md)
   * [AtomicBlockUtils](atomicblockutils.md)
   * [KeyBindingUtil](keybindingutil.md)
-  * Modifier
+  * [Modifier](modifier.md)
 
