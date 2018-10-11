@@ -30,7 +30,7 @@
   * [SelectionState](selectionstate.md)
   * [CompositeDecorator](compositedecorator.md)
   * [数据转换](shu-ju-zhuan-huan.md)
-  * RichUtils
+  * [RichUtils](richutils.md)
   * AtomicBlockUtils
   * KeyBindingUtil
   * Modifier
