@@ -32,6 +32,6 @@
   * [数据转换](shu-ju-zhuan-huan.md)
   * [RichUtils](richutils.md)
   * [AtomicBlockUtils](atomicblockutils.md)
-  * KeyBindingUtil
+  * [KeyBindingUtil](keybindingutil.md)
   * Modifier
 
