@@ -2,9 +2,9 @@
 
 * [声明](README.md)
 * [快速开始](kuai-su-kai-shi.md)
-  * [概要](shuo-ming/gai-yao.md)
-  * [基础API](shuo-ming/ji-chu-api.md)
-  * [样式](shuo-ming/yang-shi.md)
+  * [概要](kuai-su-kai-shi/gai-yao.md)
+  * [基础API](kuai-su-kai-shi/ji-chu-api.md)
+  * [样式](kuai-su-kai-shi/yang-shi.md)
 * [高级用法](gao-ji-yong-fa.md)
   * [实体](gao-ji-yong-fa/shi-ti.md)
   * [v0.10 API迁移](gao-ji-yong-fa/v010-apiqian-yi.md)
