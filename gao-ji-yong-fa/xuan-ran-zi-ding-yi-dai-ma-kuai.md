@@ -55,5 +55,43 @@ class RichEditor extends React.Component {
 }
 ```
 
+有些情况下，我们不想重写默认值，而只想添加新的块类型，可以使用`DefaultDraftBlockRenderMap`创建一个新的`blockRenderMap`来完成。
+
+```js
+const blockRenderMap = Immutable.Map({
+  'section': {
+    element: 'section'
+  }
+});
+
+// Include 'paragraph' as a valid block and updated the unstyled element but
+// keep support for other draft default block types
+const extendedBlockRenderMap = Draft.DefaultDraftBlockRenderMap.merge(blockRenderMap);
+
+class RichEditor extends React.Component {
+  render() {
+    return (
+      <Editor
+        ...
+        blockRenderMap={extendedBlockRenderMap}
+      />
+    );
+  }
+}
+```
+
+当Draft分析粘贴的HTML时，它遍历HTML元素找到对应的块类型。如果你想指定映射到特定类型块的HTML元素，你可以在块配置中添加一个`aliasedElements`数组。
+
+_unstyled块的别名用法示例：_
+
+```js
+'unstyled': {
+  element: 'div',
+  aliasedElements: ['p'],
+}
+```
+
+## 自定义块包装器
+
 
 
