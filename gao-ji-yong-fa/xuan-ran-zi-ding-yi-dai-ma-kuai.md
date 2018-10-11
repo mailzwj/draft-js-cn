@@ -95,5 +95,52 @@ _unstyled块的别名用法示例：_
 
 一般情况下，html元素被用来包装块类型。但是`blockRenderMap`也可以使用React组件来包装`EditorBlock`。
 
-当粘贴或使用[convertFromHTML](https://draftjs.org/docs/api-reference-data-conversion.html#convertfromhtml)的时候，html将被扫描为对应的标签元素。当在`blockRenderMap`上定义了特殊类型块时
+当粘贴或使用[convertFromHTML](https://draftjs.org/docs/api-reference-data-conversion.html#convertfromhtml)的时候，html将被扫描为对应的标签元素。当在`blockRenderMap`上定义了特殊类型块时，该包装器将会被使用。例如：
+
+Draft使用包装器包装`<ul/>`或`<ol/>`中的`<li/>`，但包装器也可以用于包装其他任意自定义类型。
+
+扩展默认块映射表来支持使用React组件渲染自定义块的示例：
+
+```js
+class MyCustomBlock extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return (
+      <div className='MyCustomBlock'>
+        {/* here, this.props.children contains a <section> container, as that was the matching element */}
+        {this.props.children}
+      </div>
+    );
+  }
+}
+
+const blockRenderMap = Immutable.Map({
+  'MyCustomBlock': {
+    // element is used during paste or html conversion to auto match your component;
+    // it is also retained as part of this.props.children and not stripped out
+    element: 'section',
+    wrapper: <MyCustomBlock />,
+  }
+});
+
+// keep support for other draft default block types and add our myCustomBlock type
+const extendedBlockRenderMap = Draft.DefaultDraftBlockRenderMap.merge(blockRenderMap);
+
+class RichEditor extends React.Component {
+  ...
+  render() {
+    return (
+      <Editor
+        ...
+        blockRenderMap={extendedBlockRenderMap}
+      />
+    );
+  }
+}
+```
+
+
 
