@@ -13,12 +13,12 @@
   * [焦点管理](gao-ji-yong-fa/jiao-dian-guan-li.md)
   * [块级样式](gao-ji-yong-fa/kuai-ji-yang-shi.md)
   * [渲染自定义代码块](gao-ji-yong-fa/xuan-ran-zi-ding-yi-dai-ma-kuai.md)
-  * 自定义块组件
-  * 复杂内联样式
-  * 嵌套列表
-  * 文本方向
-  * EditorState竞争条件
-  * 问题和陷阱
+  * [自定义块组件](gao-ji-yong-fa/zi-ding-yi-kuai-zu-jian.md)
+  * [复杂内联样式](gao-ji-yong-fa/fu-za-nei-lian-yang-shi.md)
+  * [嵌套列表](gao-ji-yong-fa/qian-tao-lie-biao.md)
+  * [文本方向](gao-ji-yong-fa/wen-ben-fang-xiang.md)
+  * [EditorState竞争条件](gao-ji-yong-fa/editorstatejing-zheng-tiao-jian.md)
+  * [问题和陷阱](gao-ji-yong-fa/wen-ti-he-xian-jing.md)
 * API参考
   * Editor组件
   * EditorChangeType
