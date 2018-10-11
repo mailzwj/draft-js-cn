@@ -1,7 +1,7 @@
 # Summary
 
 * [声明](README.md)
-* [快速开始](shuo-ming.md)
+* [快速开始](kuai-su-kai-shi.md)
   * [概要](shuo-ming/gai-yao.md)
   * [基础API](shuo-ming/ji-chu-api.md)
   * [样式](shuo-ming/yang-shi.md)
