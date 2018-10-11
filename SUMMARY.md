@@ -28,7 +28,7 @@
   * [CharacterMetadata](charactermetadata.md)
   * [Entity](entity.md)
   * [SelectionState](selectionstate.md)
-  * CompositeDecorator
+  * [CompositeDecorator](compositedecorator.md)
   * 数据转换
   * RichUtils
   * AtomicBlockUtils
