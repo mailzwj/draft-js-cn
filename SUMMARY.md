@@ -26,7 +26,7 @@
   * [ContentState](contentstate.md)
   * [ContentBlock](contentblock.md)
   * [CharacterMetadata](charactermetadata.md)
-  * Entity
+  * [Entity](entity.md)
   * SelectionState
   * CompositeDecorator
   * 数据转换
