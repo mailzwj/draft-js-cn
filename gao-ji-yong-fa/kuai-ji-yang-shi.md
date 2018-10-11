@@ -12,5 +12,35 @@
 
 ## blockStyleFn
 
+渲染的时候，`Editor`上的`blockStyleFn` prop 允许你定义CSS类来渲染块的样式。例如，你可能希望`'blockquote'`块中的文本显示成花式斜体样式：
+
+```js
+function myBlockStyleFn(contentBlock) {
+  const type = contentBlock.getType();
+  if (type === 'blockquote') {
+    return 'superFancyBlockquote';
+  }
+}
+
+// Then...
+import {Editor} from 'draft-js';
+class EditorWithFancyBlockquotes extends React.Component {
+  render() {
+    return <Editor ... blockStyleFn={myBlockStyleFn} />;
+  }
+}
+```
+
+然后，编写你自己的CSS样式：
+
+```css
+.superFancyBlockquote {
+  color: #999;
+  font-family: 'Hoefler Text', Georgia, serif;
+  font-style: italic;
+  text-align: center;
+}
+```
+
 
 
