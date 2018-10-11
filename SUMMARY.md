@@ -11,4 +11,5 @@
   * [按键绑定](gao-ji-yong-fa/decorators/an-jian-bang-ding.md)
   * [焦点管理](gao-ji-yong-fa/jiao-dian-guan-li.md)
   * [块级样式](gao-ji-yong-fa/kuai-ji-yang-shi.md)
+  * [渲染自定义代码块](gao-ji-yong-fa/xuan-ran-zi-ding-yi-dai-ma-kuai.md)
 
