@@ -24,7 +24,7 @@
   * [EditorChangeType](editorchangetype.md)
   * [EditorState](editorstate.md)
   * [ContentState](contentstate.md)
-  * ContentBlock
+  * [ContentBlock](contentblock.md)
   * CharacterMetadata
   * Entity
   * SelectionState
