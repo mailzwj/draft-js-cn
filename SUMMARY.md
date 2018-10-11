@@ -1,10 +1,12 @@
 # Summary
 
-* [说明](shuo-ming.md)
 * [快速开始](README.md)
-  * [概要](gai-yao.md)
-  * [基础API](ji-chu-api.md)
-  * [样式](wai-guan.md)
+* [说明](shuo-ming.md)
+  * [概要](shuo-ming/gai-yao.md)
+  * [基础API](shuo-ming/ji-chu-api.md)
+* [概要](gai-yao.md)
+* [基础API](ji-chu-api.md)
+* [样式](wai-guan.md)
 * [高级用法](gao-ji-yong-fa.md)
   * [实体](gao-ji-yong-fa/shi-ti.md)
   * [v0.10 API迁移](gao-ji-yong-fa/v010-apiqian-yi.md)
