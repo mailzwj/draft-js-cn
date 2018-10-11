@@ -20,7 +20,7 @@
   * [EditorState竞争条件](gao-ji-yong-fa/editorstatejing-zheng-tiao-jian.md)
   * [问题和陷阱](gao-ji-yong-fa/wen-ti-he-xian-jing.md)
 * API参考
-  * Editor组件
+  * [Editor组件](editorzu-jian.md)
   * EditorChangeType
   * EditorState
   * ContentState
