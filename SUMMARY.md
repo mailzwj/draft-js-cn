@@ -22,7 +22,7 @@
 * API参考
   * [Editor组件](editorzu-jian.md)
   * [EditorChangeType](editorchangetype.md)
-  * EditorState
+  * [EditorState](editorstate.md)
   * ContentState
   * ContentBlock
   * CharacterMetadata
