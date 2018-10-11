@@ -19,7 +19,7 @@
   * [文本方向](gao-ji-yong-fa/wen-ben-fang-xiang.md)
   * [EditorState竞争条件](gao-ji-yong-fa/editorstatejing-zheng-tiao-jian.md)
   * [问题和陷阱](gao-ji-yong-fa/wen-ti-he-xian-jing.md)
-* API参考
+* [API参考](apican-kao.md)
   * [Editor组件](editorzu-jian.md)
   * [EditorChangeType](editorchangetype.md)
   * [EditorState](editorstate.md)
