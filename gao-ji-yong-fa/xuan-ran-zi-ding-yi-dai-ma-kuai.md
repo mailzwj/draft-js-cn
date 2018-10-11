@@ -26,5 +26,34 @@
 
 ## 配置块与标签的对应关系
 
+`Draft`默认的块渲染映射表可以通过使用`blockRender` prop传入一个[Immutable Map](http://facebook.github.io/immutable-js/docs/#/Map)来重写。
+
+一个覆盖默认渲染映射表的例子：
+
+```js
+// The example below deliberately only allows
+// 'heading-two' as the only valid block type and
+// updates the unstyled element to also become a h2.
+const blockRenderMap = Immutable.Map({
+  'header-two': {
+    element: 'h2'
+  },
+  'unstyled': {
+    element: 'h2'
+  }
+});
+
+class RichEditor extends React.Component {
+  render() {
+    return (
+      <Editor
+        ...
+        blockRenderMap={blockRenderMap}
+      />
+    );
+  }
+}
+```
+
 
 
