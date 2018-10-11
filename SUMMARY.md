@@ -31,7 +31,7 @@
   * [CompositeDecorator](compositedecorator.md)
   * [数据转换](shu-ju-zhuan-huan.md)
   * [RichUtils](richutils.md)
-  * AtomicBlockUtils
+  * [AtomicBlockUtils](atomicblockutils.md)
   * KeyBindingUtil
   * Modifier
 
