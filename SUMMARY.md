@@ -25,7 +25,7 @@
   * [EditorState](editorstate.md)
   * [ContentState](contentstate.md)
   * [ContentBlock](contentblock.md)
-  * CharacterMetadata
+  * [CharacterMetadata](charactermetadata.md)
   * Entity
   * SelectionState
   * CompositeDecorator
