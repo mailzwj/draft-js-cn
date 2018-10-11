@@ -21,7 +21,7 @@
   * [问题和陷阱](gao-ji-yong-fa/wen-ti-he-xian-jing.md)
 * API参考
   * [Editor组件](editorzu-jian.md)
-  * EditorChangeType
+  * [EditorChangeType](editorchangetype.md)
   * EditorState
   * ContentState
   * ContentBlock
