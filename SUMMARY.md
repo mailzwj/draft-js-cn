@@ -27,7 +27,7 @@
   * [ContentBlock](contentblock.md)
   * [CharacterMetadata](charactermetadata.md)
   * [Entity](entity.md)
-  * SelectionState
+  * [SelectionState](selectionstate.md)
   * CompositeDecorator
   * 数据转换
   * RichUtils
