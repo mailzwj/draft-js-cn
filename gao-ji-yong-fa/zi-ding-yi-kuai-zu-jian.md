@@ -48,3 +48,5 @@ class EditorWithMedia extends React.Component {
 
 如果组件包含通过`ContentState`传入的文本，自定义组件应该封装成一个`DraftEditorBlock`组件。这将允许`Draft`准确控制内容中的光标。
 
+通过在上层组件上下文中定义该函数，该自定义组件的props可能需要绑定到上层组件，以便该自定义组件的props能正确调用上层组件的实例方法。
+
