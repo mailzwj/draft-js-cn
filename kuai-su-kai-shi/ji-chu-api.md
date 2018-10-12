@@ -4,15 +4,14 @@
 
 ### 受控输入
 
-React组件 `Editor` 构建为受控的ContentEditable组件，  
-其目标是提供一个基于熟悉的React控制输入API建模的顶级API。
+React `Editor` 组件被设计为一个受控的`ContentEditable`组件，其目的是提供一个可以通过React控制输入的模块化的顶级API。
 
-作为一个简短的回顾，控制输入涉及两个关键因素：
+简单回顾一下，受控输入主要涉及两个关键因素：
 
 1. 用于表示输入状态的值
-2. 一个onChange prop function来接收输入的更新
+2. 一个onChange prop函数用来接收输入的更新
 
-这种方法允许构成输入的组件对输入的状态进行严格的控制，同时仍然允许更新DOM来提供用户所写的文本信息。
+这种方式允许组件t通过输入的状态严格控制输入内容，同时仍然允许更新DOM来提供用户所写的文本信息。
 
 ```js
 class MyInput extends React.Component {
@@ -33,11 +32,10 @@ class MyInput extends React.Component {
 
 在“富文本”案例中，有两个明确的问题：
 
-1. 一串纯文本不足以表示丰富的编辑器的复杂状态。
-2. 一个 onChange prop function 用于接收输入的更新
+1. 一串纯文本不足以表示富文本编辑器的复杂状态。
+2. 没有一个`ContentEditable`元素可用的`onChange` prop。
 
-State因此被表示为一个不可变的 [EditorState](https://draftjs.org/docs/api-reference-editor-state.html) 对象，并且`onChange`在`Editor`内部实现，  
-以将该状态值提供给顶层。  
+因此状态被表示为一个唯一的不可变的 [EditorState](https://draftjs.org/docs/api-reference-editor-state.html) 对象，并且`onChange`在`Editor`内部实现，用来将该状态值提供给顶层使用。  
 （state存储的富文本内容是以对象的形式组织的。 ）
 
 ```js
@@ -55,5 +53,5 @@ class MyEditor extends React.Component {
 }
 ```
 
-对于在编辑器DOM中发生的任何编辑或选择更改，您的onChange处理程序将根据这些更改执行最新的EditorState对象。
+当编辑器DOM中发生任何编辑或选择更改，onChange处理程序将被执行并传入基于这些变化的最新的`EditorState`对象。
 
