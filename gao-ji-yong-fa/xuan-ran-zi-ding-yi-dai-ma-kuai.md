@@ -82,7 +82,7 @@ class RichEditor extends React.Component {
 
 当Draft分析粘贴的HTML时，它遍历HTML元素找到对应的块类型。如果你想指定映射到特定类型块的HTML元素，你可以在块配置中添加一个`aliasedElements`数组。
 
-_unstyled块的别名用法示例：_
+unstyled块的别名用法示例：
 
 ```js
 'unstyled': {
