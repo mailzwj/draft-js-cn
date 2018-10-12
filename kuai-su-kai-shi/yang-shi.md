@@ -4,7 +4,7 @@
 
 一个可以继续使用的[富文本编辑器示例](https://github.com/facebook/draft-js/tree/master/examples/draft-0-10-0/rich)。
 
-## EditorState: Yours to Command
+### EditorState: Yours to Command
 
 之前的文章介绍了`EditorState`对象作为编辑器的完整状态的快照，由编辑器核心通过`onChange` prop提供。但是，由于您的顶级React组件负责维护状态，您还可以以任何您认为合适的方式将修改应用于该`EditorState`对象。
 
@@ -14,7 +14,7 @@
 
 对于这个例子，我们将坚持使用`RichUtils`来演示如何在顶级组件中应用基本的丰富样式。
 
-## RuchUtils和键盘命令
+### RuchUtils和键盘命令
 
 `RichUtils`提供有关Web编辑器可用的核心键盘命令的信息，如Cmd + B（粗体），Cmd + I（斜体）等）。
 
@@ -55,7 +55,7 @@ class MyEditor extends React.Component {
 > 提供给`handleKeyCommand`的命令参数是一个字符串值，即要执行的命令\(command\)的名称。  
 > 这是从DOM键盘事件映射的。 有关更多信息，请参阅高级主题 - [按键绑定](https://draftjs.org/docs/advanced-topics-key-bindings.html)，以及为什么函数返回处理或未被处理的详细信息。
 
-## 控制UI样式
+### 控制UI样式
 
 在React组件中，您可以添加按钮或其他控件，以允许用户在编辑器中修改样式。在上面的例子中，我们使用已知的按键命令，但是我们可以添加更复杂的UI来提供这些丰富的功能。
 
