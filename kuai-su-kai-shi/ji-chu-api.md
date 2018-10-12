@@ -1,6 +1,6 @@
 ## 基础API
 
-本文档概述了`Draft` API的基础知识。 一个工作的例子也可以跟随。
+本节概述了`Draft` API的基础知识。 一个使用[基础API的演示示例](https://github.com/facebook/draft-js/tree/master/examples/draft-0-10-0/plaintext)。
 
 ## 受控输入
 
