@@ -10,11 +10,11 @@
 
 但是，由于您的顶级React组件负责维护状态，您也可以以任何您认为合适的方式修改该`EditorState`对象。
 
-对于内联和块样式行为，例如，[`RichUtils`](https://draftjs.org/docs/api-reference-rich-utils.html)模块提供了许多有用的函数来帮助处理状态。
+例如，对于内联和块样式行为，[`RichUtils`](https://draftjs.org/docs/api-reference-rich-utils.html)模块提供了许多有用的函数来帮助处理状态。
 
 类似地，[修饰器\(Modifier\)](https://draftjs.org/docs/api-reference-modifier.html) 模块还提供了许多常见操作，允许您应用编辑，包括对文本，样式等的更改。该模块是一组编辑功能，它们组成更简单，更小的编辑功能，以返回所需的`EditorState`对象。
 
-对于这个例子，我们将坚持使用`RichUtils`来演示如何在顶级组件中应用基本的丰富样式。
+对于这个例子，我们将坚持使用`RichUtils`来演示如何在顶级组件中应用基本的富文本样式。
 
 ### RuchUtils和键盘命令
 
