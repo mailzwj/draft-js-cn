@@ -20,7 +20,7 @@
 
 `RichUtils`提供有关Web编辑器可用的核心键盘命令的信息，如Cmd + B（粗体），Cmd + I（斜体）等）。
 
-我们可以通过`handleKeyCommand` prop来观察和处理键盘命令，并将它们连接到`RichUtils`中以应用或删除所需的样式。
+我们可以通过`handleKeyCommand` prop来观察和处理键盘命令，并将它们传入`RichUtils`中来应用或删除所需的样式。
 
 ```js
 import {Editor, EditorState, RichUtils} from 'draft-js';
