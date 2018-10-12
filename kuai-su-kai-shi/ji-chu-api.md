@@ -2,7 +2,7 @@
 
 本节概述了`Draft` API的基础知识。 一个使用[基础API的演示示例](https://github.com/facebook/draft-js/tree/master/examples/draft-0-10-0/plaintext)。
 
-## 受控输入
+### 受控输入
 
 React组件 `Editor` 构建为受控的ContentEditable组件，  
 其目标是提供一个基于熟悉的React控制输入API建模的顶级API。
@@ -29,7 +29,7 @@ class MyInput extends React.Component {
 
 顶级组件可以通过该state属性来保持对输入状态的控制。
 
-## 控制富文本
+### 控制富文本
 
 在“富文本”案例中，有两个明确的问题：
 
