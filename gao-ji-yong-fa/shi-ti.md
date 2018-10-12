@@ -10,7 +10,7 @@
 
 有关实体API最近更改的信息以及如何更新应用程序的示例，请参阅我们的[v0.10 API迁移指南](https://draftjs.org/docs/v0-10-api-migration.html#content)。
 
-## 介绍
+### 介绍
 
 实体是表示Draft编辑器中文本范围的元数据的对象。 它有三个属性：
 
@@ -22,7 +22,7 @@
 
 使用[装饰器](https://draftjs.org/docs/advanced-topics-decorators.html)或[自定义块组件](https://draftjs.org/docs/advanced-topics-block-components.html)，您可以根据实体元数据向编辑器添加丰富的渲染样式。
 
-## 创建和检索实体
+### 创建和检索实体
 
 1. 通过 `contentState.createEntity`来创建实体。
 2. 他接受上面3个属性作为参数。
@@ -57,14 +57,14 @@ const linkInstance = contentState.getEntity(linkKey);
 const {url} = linkInstance.getData();
 ```
 
-## 可变性
+### 可变性
 
 实体可以是三个“可变性”值中的其中一个。 它们之间的差异是用户对其进行编辑时的行为方式。
 
 请注意，`DraftEntityInstance`对象始终是不可变记录，此属性仅用于指示注释文本在编辑器中如何“突变”。  
 （未来的变化可能会重命名此属性，以防止围绕命名的潜在混淆。）
 
-## 不可变（Immutable）
+### 不可变（Immutable）
 
 如果不从文本中删除实体注释，则无法更改此文本。 具有这种可变性类型的实体是有效的原子。
 
@@ -74,13 +74,13 @@ const {url} = linkInstance.getData();
 
 （ 实体关联的文字修改后就直接全部删掉，文字也删掉，对应的实体也删掉 ）
 
-## 可变（Mutable）
+### 可变（Mutable）
 
 本文可能会自由更改。 例如，链接文本通常意图是“可变的”，因为href和链接文本没有紧密耦合。
 
 \( 可以修改实体对应的内容，不会影响实体与内容的关联 \)
 
-## 分段（Segmented）
+### 分段（Segmented）
 
 “分段”的实体以与“不可变”实体非常相似的方式与其文本紧密耦合，但允许通过删除进行自定义。
 
@@ -90,14 +90,14 @@ const {url} = linkInstance.getData();
 
 （ 不能修改文字，当修改后不会删掉整个范围的文字，但是会取消与实体关联 ）
 
-## 修改实体
+### 修改实体
 
 由于`DraftEntityInstance`记录是不可变的，因此您不能直接更新实例上的`data`属性。
 
 相反，两个`Entity`方法可用于修改实体：`mergeData`和`replaceData`。  
 前者允许通过传入对象来合并来更新数据，而后者在新的数据对象中完全交换。
 
-## 使用实体丰富的内容
+### 使用实体丰富的内容
 
 本节中的下一篇文章将介绍装饰器对象的用法，可用于检索实体以进行渲染。
 
