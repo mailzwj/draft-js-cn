@@ -50,3 +50,7 @@ class EditorWithMedia extends React.Component {
 
 通过在上层组件上下文中定义该函数，该自定义组件的props可能需要绑定到上层组件，以便该自定义组件的props能正确调用上层组件的实例方法。
 
+### 定义自定义块组件
+
+
+
