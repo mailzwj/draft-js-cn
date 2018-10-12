@@ -52,5 +52,5 @@ class EditorWithMedia extends React.Component {
 
 ### 定义自定义块组件
 
-`MediaComponent`最常见的使用场景是恢复实体元数据来渲染自定义块。
+`MediaComponent`最常见的使用场景是恢复实体元数据来渲染自定义块。在管理`EditorState`期间，你可以在`'atomic'`块中将整个实体key全部写进文本，然后在自定义组件的`render()`方法中恢复key对应的元数据。
 
