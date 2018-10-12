@@ -54,3 +54,16 @@ class EditorWithMedia extends React.Component {
 
 `MediaComponent`最常见的使用场景是恢复实体元数据来渲染自定义块。在管理`EditorState`期间，你可以在`'atomic'`块中将整个实体key全部写进文本，然后在自定义组件的`render()`方法中恢复key对应的元数据。
 
+```js
+class MediaComponent extends React.Component {
+  render() {
+    const {block, contentState} = this.props;
+    const {foo} = this.props.blockProps;
+    const data = contentState.getEntity(block.getEntityAt(0)).getData();
+    // Return a <figure> or some other content using this data.
+  }
+}
+```
+
+
+
