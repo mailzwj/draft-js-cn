@@ -44,3 +44,7 @@ class EditorWithMedia extends React.Component {
 
 `component`属性用来定义要使用的组件，当可选的`props`对象包含props时，它将通过props.blockProps子属性对象传入自定义组件渲染器。此外，可选属性`editable`用于控制自定义组件是否可被编辑。
 
+如果你的组件不会包含文本，强烈推荐使用`editable: false`。
+
+
+
