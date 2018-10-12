@@ -4,7 +4,7 @@
 
 当你粘贴内容或者使用[convertFromHTML](https://draftjs.org/docs/api-reference-data-conversion.html#convertfromhtml)的时候，`Draft`通过将`Draft`渲染块映射为相应的标签，把粘贴的内容转换为相应的渲染块进行展示。
 
-## Draft块类型与标签对应关系
+### Draft块类型与标签对应关系
 
 | HTML标签 | Draft块类型 |
 | :--- | :--- |
@@ -24,7 +24,7 @@
 
 \*\*\*：任何未被块渲染器所识别的块都将被处理为unstyled。
 
-## 配置块与标签的对应关系
+### 配置块与标签的对应关系
 
 `Draft`默认的块渲染映射表可以通过使用`blockRender` prop传入一个[Immutable Map](http://facebook.github.io/immutable-js/docs/#/Map)来重写。
 
@@ -91,7 +91,7 @@ unstyled块的别名用法示例：
 }
 ```
 
-## 自定义块包装器
+### 自定义块包装器
 
 一般情况下，html元素被用来包装块类型。但是`blockRenderMap`也可以使用React组件来包装`EditorBlock`。
 
