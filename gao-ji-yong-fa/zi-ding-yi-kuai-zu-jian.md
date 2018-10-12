@@ -8,5 +8,5 @@ Draft仓库中提供了一个自定义块渲染的示例[TeX editor](https://git
 
 Draft还提供了一个[在编辑器中嵌入媒体的示例](https://github.com/facebook/draft-js/tree/master/examples/draft-0-10-0/media)，演示如何自定义渲染`audio`、`image`和`video`。
 
-通过使用自定义块渲染器，你可以再你的编辑器中加入许多复杂的交互。
+通过使用自定义块渲染器，你可以在你的编辑器中加入许多复杂的交互。
 
