@@ -65,5 +65,11 @@ class MediaComponent extends React.Component {
 }
 ```
 
+在自定义组件中可以使用`contentBlock`对象和`ContentState`记录，以及上层组件中定义的props。通过从`ContentBlock`和`Entity`映射表中提取实体信息，你可以得到渲染自定义组件需要的元数据。
+
+_从块中恢复实体的API被很多人认为不太友好，这值得重新研究。_
+
+### 建议与其他注意事项
+
 
 
