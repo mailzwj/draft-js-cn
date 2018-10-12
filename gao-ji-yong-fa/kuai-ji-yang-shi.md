@@ -4,13 +4,13 @@
 
 通过在`Editor`组件上定义`blockStyleFn` prop函数，可以指定用于代码块的class\(css类选择器\)。
 
-## DraftStyleDefault.css
+### DraftStyleDefault.css
 
 `Draft`库在[DraftStyleDefault.css](https://github.com/facebook/draft-js/blob/master/src/component/utils/DraftStyleDefault.css)中提供了默认的块CSS样式。（注意：CSS类名前的注释是由Facebook内部的模块管理系统自动生成的）
 
 这个css文件主要提供列出项的默认css样式，不需要使用者调用什么方法来管理他们的默认样式。
 
-## blockStyleFn
+### blockStyleFn
 
 渲染的时候，`Editor`上的`blockStyleFn` prop 允许你定义CSS类来渲染块的样式。例如，你可能希望`'blockquote'`块中的文本显示成花式斜体样式：
 
