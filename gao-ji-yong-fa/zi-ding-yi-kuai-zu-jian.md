@@ -52,5 +52,5 @@ class EditorWithMedia extends React.Component {
 
 ### 定义自定义块组件
 
-
+`MediaComponent`最常见的使用场景是恢复实体元数据来渲染自定义块。
 
