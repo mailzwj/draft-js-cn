@@ -40,5 +40,7 @@ class EditorWithMedia extends React.Component {
 }
 ```
 
+如果`blockRendererFn`函数没有返回一个自定义渲染器对象，`Editor`组件将默认使用`DraftEditorBlock`文本块组件来渲染。
+
 
 
