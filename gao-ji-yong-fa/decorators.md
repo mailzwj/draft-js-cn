@@ -6,7 +6,7 @@
 
 （“装饰器是用来添加高级富内容的一种方法”）
 
-## 组合修饰器
+### 组合修饰器
 
 1. 扫描给定的[ContentBlock](https://draftjs.org/docs/api-reference-content-block.html)。
 2. 满足定义的匹配策略的文本范围。
@@ -64,7 +64,7 @@ function findWithRegex(regex, contentBlock, callback) {
 
 策略函数执行提供的回调并传入匹配的文本范围的起始和结束值。
 
-## 修饰器组件
+### 修饰器组件
 
 对于您修饰的文本范围，您必须定义一个用于渲染它们的React组件。 这些往往是一个使用 CSS 或 style 的 span 元素。
 
@@ -88,11 +88,11 @@ const HashtagSpan = (props) => {
 
 您可以使用相同的方法进行链接，如我们的[链接示例](https://github.com/facebook/draft-js/tree/master/examples/draft-0-10-0/link)所示。
 
-## 超越组合修饰器
+### 超越组合修饰器
 
 提供给`EditorState`使用的修饰器，只需要满足符合类型定义的[DraftDecoratorType](https://github.com/facebook/draft-js/blob/master/src/model/decorators/DraftDecoratorType.js)。这意味着您可以创建任何您想要的装饰器类，只要它们与预定类型相匹配，则不受`CompositeDecorator`的限制。
 
-## 设置新的修饰器
+### 设置新的修饰器
 
 当然，在正常state传播期间，通过不可变的方式，可以在`EditorState`上设置新的修饰器值。
 
