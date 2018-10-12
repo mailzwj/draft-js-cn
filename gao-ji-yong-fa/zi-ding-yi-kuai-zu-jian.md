@@ -42,5 +42,5 @@ class EditorWithMedia extends React.Component {
 
 如果`blockRendererFn`函数没有返回一个自定义渲染器对象，`Editor`组件将默认使用`DraftEditorBlock`文本块组件来渲染。
 
-`component`属性用来定义要使用的组件，当可选的`props`对象包含props时，它将通过props.blockProps子属性对象传入自定义组件渲染器。
+`component`属性用来定义要使用的组件，当可选的`props`对象包含props时，它将通过props.blockProps子属性对象传入自定义组件渲染器。此外，可选属性`editable`用于控制自定义组件是否可被编辑。
 
