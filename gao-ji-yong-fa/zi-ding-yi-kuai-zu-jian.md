@@ -46,5 +46,5 @@ class EditorWithMedia extends React.Component {
 
 如果你的组件不会包含文本，强烈推荐使用`editable: false`。
 
-
+如果组件包含通过`ContentState`传入的文本，自定义组件应该封装成一个`DraftEditorBlock`组件。这将允许`Draft`准确控制内容中的光标。
 
