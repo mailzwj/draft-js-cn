@@ -12,5 +12,33 @@ Draft还提供了一个[在编辑器中嵌入媒体的示例](https://github.com
 
 ### 自定义块组件
 
+在`Editor`组件中，开发者可能会指定一个`blockRendererFn` prop。这个函数允许上层组件根据块类型、文本或其他规则为`ContentBlock`对象定义自定义渲染器。
+
+例如，我们可以希望使用自定义组件`MediaComponent`来渲染`'atomic'`类型的`ContentBlock`对象：
+
+```js
+function myBlockRenderer(contentBlock) {
+  const type = contentBlock.getType();
+  if (type === 'atomic') {
+    return {
+      component: MediaComponent,
+      editable: false,
+      props: {
+        foo: 'bar',
+      },
+    };
+  }
+}
+
+// Then...
+import {Editor} from 'draft-js';
+class EditorWithMedia extends React.Component {
+  ...
+  render() {
+    return <Editor ... blockRendererFn={myBlockRenderer} />;
+  }
+}
+```
+
 
 
