@@ -8,13 +8,13 @@ Draft.js v0.10发行版包含对用于管理`DraftEntity`数据的API的更改; 
 * DraftEntity将不再可全局访问。
 * 对实体数据的任何更改将触发重新渲染。
 
-## 概要
+### 概要
 
 以下简要列出已更改的内容以及如何更新应用程序：
 
-## 创建一个实体
+### 创建一个实体
 
-### 旧语法
+#### 旧语法
 
 ```js
 const entityKey = Entity.create(
@@ -24,7 +24,7 @@ const entityKey = Entity.create(
 );
 ```
 
-### 新语法
+#### 新语法
 
 ```js
 const contentStateWithEntity = contentState.createEntity(
@@ -35,25 +35,25 @@ const contentStateWithEntity = contentState.createEntity(
 const entityKey = contentStateWithEntity.getLastCreatedEntityKey();
 ```
 
-## 获取一个实体
+### 获取一个实体
 
-### 旧语法
+#### 旧语法
 
 ```js
 const entityInstance = Entity.get(entityKey);
 // entityKey is a string key associated with that entity when it was created
 ```
 
-### 新语法
+#### 新语法
 
 ```js
 const entityInstance = contentState.getEntity(entityKey);
 // entityKey is a string key associated with that entity when it was created
 ```
 
-## 修饰器策略参数变化
+### 修饰器策略参数变化
 
-### 旧语法
+#### 旧语法
 
 ```js
 const compositeDecorator = new CompositeDecorator([
@@ -64,7 +64,7 @@ const compositeDecorator = new CompositeDecorator([
 ]);
 ```
 
-### 新语法
+#### 新语法
 
 ```js
 const compositeDecorator = new CompositeDecorator([
@@ -102,9 +102,9 @@ const mutableEntityStrategy = function(contentBlock, callback, contentState) {
 };
 ```
 
-## 查找实体的修饰器策略
+### 查找实体的修饰器策略
 
-### 旧语法
+#### 旧语法
 
 ```js
 function findLinkEntities(contentBlock, callback) {
@@ -121,7 +121,7 @@ function findLinkEntities(contentBlock, callback) {
 };
 ```
 
-### 新语法
+#### 新语法
 
 ```js
 function findLinkEntities(contentBlock, callback, contentState) {
@@ -138,7 +138,7 @@ function findLinkEntities(contentBlock, callback, contentState) {
 };
 ```
 
-## 更多信息
+### 更多信息
 
 更多信息请查看[最新的示例](https://github.com/facebook/draft-js/tree/master/examples/draft-0-10-0)。
 
