@@ -6,7 +6,9 @@
 
 ### EditorState: Yours to Command
 
-之前的文章介绍了`EditorState`对象。作为由编辑器内部通过`onChange` prop提供的完整状态的简单介绍。但是，由于您的顶级React组件负责维护状态，您还可以以任何您认为合适的方式将修改应用于该`EditorState`对象。
+之前的文章介绍了`EditorState`对象。作为由编辑器内部通过`onChange` prop提供的完整状态的简单介绍。
+
+但是，由于您的顶级React组件负责维护状态，您也可以以任何您认为合适的方式修改该`EditorState`对象。
 
 对于内联和块样式行为，例如，[`RichUtils`](https://draftjs.org/docs/api-reference-rich-utils.html)模块提供了许多有用的函数来帮助处理状态。
 
