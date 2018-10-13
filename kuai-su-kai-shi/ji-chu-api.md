@@ -11,7 +11,7 @@ React `Editor` 组件被设计为一个受控的`ContentEditable`组件，其目
 1. 用于表示输入状态的值
 2. 一个onChange prop函数用来接收输入的更新
 
-这种方式允许组件t通过输入的状态严格控制输入内容，同时仍然允许更新DOM来提供用户所写的文本信息。
+这种方式允许组件通过输入的状态严格控制输入内容，同时仍然允许更新DOM来提供用户所写的文本信息。
 
 ```js
 class MyInput extends React.Component {
