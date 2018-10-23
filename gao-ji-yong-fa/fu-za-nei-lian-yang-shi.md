@@ -4,7 +4,7 @@
 
 [Rich Editor](http://github.com/facebook/draft-js/tree/master/examples/draft-0-10-0/rich)和[Colorful Editor](http://github.com/facebook/draft-js/tree/master/examples/draft-0-10-0/color)两个实例展示了如何使用复杂的内联样式。
 
-## Model 模型
+### Model 模型
 
 在Draft模型中，行内样式体现在字符级别上，使用一个不可变的`OrderedSet`对象来定义应用于每个字符的样式列表。这些样式通过字符串来识别（详情请参阅[CharacterMetadata](https://draftjs.org/docs/api-reference-character-metadata.html)）。
 
@@ -23,7 +23,7 @@
 ]
 ```
 
-## 样式叠加
+### 样式叠加
 
 现在，我们希望将中间的字符串显示为斜体：He_llo **wo**_**rld**。这个操作可以使用 [Modifier](https://draftjs.org/docs/api-reference-modifier.html) API来执行。
 
@@ -44,7 +44,7 @@
 
 当编辑器确定如何渲染内联样式文本时，Draft将标记具备相同样式的连续字符，并将它们渲染到一个具备样式的span标签中。
 
-## 将样式字符串映射到CSS
+### 将样式字符串映射到CSS
 
 `Editor`默认提供一个基础内联样式清单：`'BOLD'`、`'ITALIC'`、`'UNDERLINE'`和`'CODE'`。这些命令已经被映射到了简单的CSS样式，用于相关内容区域的样式渲染。
 

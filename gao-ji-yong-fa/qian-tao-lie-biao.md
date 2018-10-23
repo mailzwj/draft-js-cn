@@ -2,7 +2,7 @@
 
 Draft框架提供了嵌套列表支持，如Facebook Notes编辑器所示。在Facebook Notes编辑器中，你可以使用`Tab`和`Shift+Tab`来增加或移除列表项的缩进。
 
-## 实现
+### 实现
 
 [`RichUtils`](https://draftjs.org/docs/api-reference-rich-utils.html)模块提供了一个方便的`onTab`方法来管理这种行为，并且应该足以满足大部分列表嵌套的需求。你可以在你的`Editor`中使用`onTab` prop来使用该功能。
 

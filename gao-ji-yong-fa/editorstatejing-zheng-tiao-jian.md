@@ -39,3 +39,9 @@ this.onPaste = function() {
 
 你可以通过[该示例](https://jsfiddle.net/qecccw3r/)观察和探索优先级问题。该示例还通过日志来突出JS执行顺序，因此你可以打开开发者工具查看详细信息。
 
+根据经验，应避免在相同的事件中使用不同的事件处理程序来处理`EditorState`。使用`setTimeout`来执行`setState`同样可能出现类似状况。任何时候你觉得你遇到了“losing state（状态丢失）”，请先确认你没有在`Editor`重新执行`render()`之前覆盖state。
+
+### 最佳实践
+
+
+
