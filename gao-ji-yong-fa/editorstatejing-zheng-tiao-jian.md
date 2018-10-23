@@ -43,5 +43,31 @@ this.onPaste = function() {
 
 ### 最佳实践
 
+现在我们已经明白了这个问题，我们可以做些什么来避免这种问题呢？通常需要注意我们从那里得到`EditorState`。如果你使用一个暂存的state（存储在`this.state`中），那么它有可能不是最新的。为了最小化该问题，Draft在许多callback函数中提供了最新的`EditorState`实例。在我们的代码中，应该使用编辑器提供的`EditorState`来代替暂存的state对象，来确保我们基于最新的`EditorState`进行修改。`Editor`上支持callback的列表如下：
 
+* `handleReturn(event, editorState)`
+* `handleKeyCommand(command, editorState)`
+* `handleBeforeInput(chars, editorState)`
+* `handlePastedText(text, html, editorState)`
+
+粘贴内容的示例可以使用这些方法进行重写，以达到更好的效果：
+
+```js
+this.handlePastedText = (text, styles, editorState) => {
+  this.setState({
+    editorState: removeEditorStyles(text, editorState)
+  });
+}
+//...
+<Editor
+  editorState={this.state.editorState}
+  onChange={this.onChange}
+  handlePastedText={this.handlePastedText}
+  placeholder="Enter some text..."
+/>
+```
+
+在`handlePastedText`中，我们可以用自己的方式实现粘贴功能。
+
+注意：如果你想让你的编辑器拥有这个功能，还有一个更加简便的方式可以达到目的。只需将`Editor`的`stripPastedStyles`属性设置为`true`。
 
