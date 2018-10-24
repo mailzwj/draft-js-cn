@@ -66,5 +66,5 @@ ReactDOM.render(
 
 #### 暂不支持移动设备
 
-Draft.js正在往全面支持移动浏览方向发展，但截至目前还没有正式支持移动浏览器。
+Draft.js正在往全面支持移动浏览方向发展，但截至目前还没有正式支持移动浏览器。有一些影响Android和iOS的问题，请参阅被标记为['android'](https://github.com/facebook/draft-js/labels/android)和['ios'](https://github.com/facebook/draft-js/labels/ios)的问题查看当前状态。
 
