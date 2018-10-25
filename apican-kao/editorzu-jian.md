@@ -10,7 +10,21 @@
 
 ##### editorState
 
-`editorState: EditorState`
+```js
+  editorState: EditorState
+```
+
+`EditorState`对象由`Editor`创建。
+
+##### onChange
+
+```js
+  onChange: (editorState: EditorState) => void
+```
+
+`onChange`方法在`Editor`编辑或文本选区（selection）变化的时候触发。
+
+
 
 
 
