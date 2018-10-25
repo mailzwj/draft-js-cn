@@ -38,13 +38,13 @@ Draft框架包含少量与编辑器组件一起使用的CSS样式资源，这些
 
 #### 输入法编辑器与IE（IME and Internet Explorer）
 
-截止IE11，IE浏览器暴露出了一些使用国际输入法是的显著问题，其中最为显著的就是韩语输入。
+截止IE11，IE浏览器暴露出了一些使用国际输入法时的显著问题，其中最为显著的就是韩语输入。
 
 #### Polyfills
 
 Draft和它的依赖模块中使用了一些ES2015的语言特性。在构建Draft时，像`class`这样的语法特性是通过Babel来编译的，但它并不包括一些在现在高级浏览器中包含的API（例如：`String.prototype.startsWith`）的兼容实现。我们希望您的浏览器本身支持这些API，或者在polyfill的帮助下支持这些API。我们在很多示例中使用了[es6-shim](https://github.com/es-shims/es6-shim)这个polyfill，但如果你有更多的使用场景，请酌情使用[babel-polyfill](https://babeljs.io/docs/usage/polyfill/)。
 
-当使用polyfill/shim时，应该尽早将其进入到应用程序中（至少要在引入Draft之前）。例如，使用[create-react-app](https://github.com/facebookincubator/create-react-app)来创建运行在IE11中的应用，`src/index.js`可能是导入polyfill最合适的地方。
+当使用polyfill/shim时，应该尽早将其引入到应用程序中（至少要在引入Draft之前）。例如，使用[create-react-app](https://github.com/facebookincubator/create-react-app)来创建运行在IE11中的应用，`src/index.js`可能是引入polyfill最合适的地方。
 
 **src/index.js**
 
