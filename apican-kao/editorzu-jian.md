@@ -24,7 +24,13 @@
 
 `onChange`方法在`Editor`编辑或文本选区（selection）变化的时候触发。
 
+#### Presentation \(可选\)
 
+##### placeholder
 
+```js
+placeholder?: string
+```
 
+当编辑器输入为空时展示可选的placeholder字段。
 
