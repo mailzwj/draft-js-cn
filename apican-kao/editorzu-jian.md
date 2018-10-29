@@ -58,13 +58,11 @@ textDirectionality?: DraftTextDirectionality
 
 如果没有设置这个属性，文本的方向性将会基于编辑器的特性，以每个块为基准。
 
+##### blockRendererFn
 
-
-
-
-
-
-
+```
+blockRendererFn?: (block: ContentBlock) => ?Object
+```
 
 
 
