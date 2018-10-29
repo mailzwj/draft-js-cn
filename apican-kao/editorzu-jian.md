@@ -36,3 +36,11 @@ placeholder?: string
 
 注意：你可以根据需要用CSS给placeholder添加style样式或隐藏placeholder。以富文本编辑器举例，当用户在空编辑器中更改块样式时placeholder被隐藏。这是因为当样式更改时，placeholder可能不会与光标对齐。
 
+##### textAlignment
+
+```js
+textAlignment?: DraftTextAlignment
+```
+
+可选地为编辑器设置覆盖文本的对齐方式。无论输入文本的默认文字方向如何，该对齐方式会应用到整个文本。
+
