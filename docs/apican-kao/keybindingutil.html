@@ -595,6 +595,28 @@
                                 <section class="normal markdown-section">
                                 
                                 <h2 id="keybindingutil">KeyBindingUtil</h2>
+<p><code>KeyBindingUtil</code>&#x6A21;&#x5757;&#x662F;&#x7528;&#x4E8E;&#x5B9A;&#x4E49;&#x5FEB;&#x6377;&#x952E;&#x7684;&#x4E00;&#x7EC4;&#x5B9E;&#x7528;&#x9759;&#x6001;&#x65B9;&#x6CD5;&#x7684;&#x96C6;&#x5408;&#x3002;</p>
+<h3 id="&#x9759;&#x6001;&#x65B9;&#x6CD5;">&#x9759;&#x6001;&#x65B9;&#x6CD5;</h3>
+<h4 id="isctrlkeycommand">isCtrlKeyCommand</h4>
+<pre><code class="lang-js">isCtrlKeyCommand: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">
+  e: SyntheticKeyboardEvent
+</span>): <span class="hljs-title">boolean</span>
+</span></code></pre>
+<p>&#x68C0;&#x67E5;<code>ctrlKey</code>&#x662F;&#x5426;&#x4E0E;<code>altKey</code>&#x4E00;&#x8D77;&#x4F7F;&#x7528;&#x3002;&#x5982;&#x679C;&#x5C06;&#x5B83;&#x4EEC;&#x7EC4;&#x5408;&#x5728;&#x4E00;&#x8D77;&#xFF0C;&#x7ED3;&#x679C;&#x5C06;&#x662F;<code>altGraph</code>&#xFF0C;&#x5B83;&#x4E0D;&#x4F1A;&#x88AB;&#x8BE5;&#x5FEB;&#x6377;&#x952E;&#x5904;&#x7406;&#x3002;</p>
+<h4 id="isoptionkeycommand">isOptionKeyCommand</h4>
+<pre><code class="lang-js">isOptionKeyCommand: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">
+  e: SyntheticKeyboardEvent
+</span>): <span class="hljs-title">boolean</span>
+</span></code></pre>
+<h4 id="usesmacosheuristics">usesMacOSHeuristics</h4>
+<pre><code class="lang-js">usesMacOSHeuristics: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>): <span class="hljs-title">boolean</span>
+</span></code></pre>
+<p>&#x68C0;&#x67E5;&#x662F;&#x5426;&#x5728;&#x5185;&#x90E8;&#x4F7F;&#x7528;&#x4EC5;&#x9002;&#x7528;&#x4E8E;macOS&#x7684;&#x89E6;&#x53D1;&#x65B9;&#x5F0F;&#xFF0C;&#x4F8B;&#x5982;&#x5728;&#x786E;&#x5B9A;&#x7EC4;&#x5408;&#x952E;&#x65F6;&#x4F7F;&#x7528;Command&#x952E;&#x3002;</p>
+<h4 id="hascommandmodifier">hasCommandModifier</h4>
+<pre><code class="lang-js">hasCommandModifier: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">
+  e: SyntheticKeyboardEvent
+</span>): <span class="hljs-title">boolean</span>
+</span></code></pre>
 
                                 
                                 </section>
@@ -638,7 +660,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"KeyBindingUtil","level":"1.4.13","depth":2,"next":{"title":"Modifier","level":"1.4.14","depth":2,"path":"apican-kao/modifier.md","ref":"apican-kao/modifier.md","articles":[]},"previous":{"title":"AtomicBlockUtils","level":"1.4.12","depth":2,"path":"apican-kao/atomicblockutils.md","ref":"apican-kao/atomicblockutils.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"apican-kao/keybindingutil.md","mtime":"2018-10-11T10:39:04.049Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-10-25T01:24:25.580Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"KeyBindingUtil","level":"1.4.13","depth":2,"next":{"title":"Modifier","level":"1.4.14","depth":2,"path":"apican-kao/modifier.md","ref":"apican-kao/modifier.md","articles":[]},"previous":{"title":"AtomicBlockUtils","level":"1.4.12","depth":2,"path":"apican-kao/atomicblockutils.md","ref":"apican-kao/atomicblockutils.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"apican-kao/keybindingutil.md","mtime":"2018-10-29T03:04:20.240Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-10-29T03:11:49.147Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
