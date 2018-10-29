@@ -16,5 +16,79 @@ DOM方法中将每个点表示为一对节点\(Node\)/偏移量\(offset\)，其�
 
 当我们真正在浏览器中渲染选区的时候，锚点和焦点的概念非常有用，因为它允许我们根据需要选择向前或向后选择。但是，对于编辑操作，选择的方向无关紧要。这种情况，考虑起点和终点更合适。
 
+因此，`SelectionState`会同时提供锚点/焦点和开始点/结束点的值。管理选择行为时，我们建议使用锚点和焦点来维护选择方向。但是，在管理内容操作时，我们更建议使用开始和结束值。
 
+例如，当我们基于`SelectionState`从块中截取一段文本时，是否向后选择内容并不重要：
+
+```js
+var selectionState = editorState.getSelection();
+var anchorKey = selectionState.getAnchorKey();
+var currentContent = editorState.getCurrentContent();
+var currentContentBlock = currentContent.getBlockForKey(anchorKey);
+var start = selectionState.getStartOffset();
+var end = selectionState.getEndOffset();
+var selectedText = currentContentBlock.getText().slice(start, end);
+```
+
+注意，对于`SelectionState`本身只会记录锚点和焦点值，开始和结束值需要计算才能得到。
+
+### 概览
+
+_静态方法_
+
+* [static createEmpty\(blockKey\)](#createempty)
+
+_方法_
+
+* [getStartKey\(\)](#getstartkey)
+* [getStartOffset\(\)](#getstartoffset)
+* [getEndKey\(\)](#getendkey)
+* [getEndOffset\(\)](#getendoffset)
+* [getAnchorKey\(\)](#getanchorkey)
+* [getAnchorOffset\(\)](#getanchoroffset)
+* [getFocusKey\(\)](#getfocuskey)
+* [getFocusOffset\(\)](#getfocusoffset)
+* [getIsBackward\(\)](#getisbackward)
+* [getHasFocus\(\)](#gethasfocus)
+* [isCollapsed\(\)](#iscollapsed)
+* [hasEdgeWithin\(blockKey, start, end\)](#hasedgewithin)
+* [serialize\(\)](#serialize)
+
+_属性_
+
+> 使用[Immutable Map API](http://facebook.github.io/immutable-js/docs/#/Record/Record)来设置属性。
+>
+> **例**
+>
+> ```js
+> const selectionState = SelectionState.createEmpty();
+> const selectionStateWithNewFocusOffset = selection.set('focusOffset', 1);
+> ```
+
+* [anchorKey](#anchorkey)
+* [anchorOffset](#anchoroffset)
+* [focusKey](#focuskey)
+* [focusOffset](#focusoffset)
+* [isBackward](#isbackward)
+* [hasFocus](#hasfocus)
+
+### 静态方法
+
+#### createEmpty\(\) {#createempty}
+
+```js
+createEmpty(blockKey: string): SelectionState
+```
+
+在提供的块key的零偏移处创建一个`SelectionState`对象，并将`hasFocus`设置为`false`。
+
+### 方法
+
+#### getStartKey\(\) {#getstartkey}
+
+```js
+getStartKey(): string
+```
+
+返回包含选区起始位置的块的key。
 
