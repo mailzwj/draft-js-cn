@@ -44,5 +44,5 @@ this.state = {
 };
 ```
 
-将一段HTML片段转换为一个包含两个key的对象。其中一个保存`ContentBlock`对象数组，另一个保存对entityMap的引用。再从块元素数组和entityMap构造contentState，然后使用该contentState更新editorState。查看[完整示例](https://github.com/facebook/draft-js/tree/master/examples/draft-0-10-0/convertFromHTML)。
+将一段HTML片段转换为一个包含两个key的对象。其中一个\(`contentBlocks`\)保存`ContentBlock`对象数组，另一个\(`entityMap`\)保存对entityMap的引用。再从`contentBlocks`和`entityMap`构造contentState，然后使用该contentState更新editorState。查看[完整示例](https://github.com/facebook/draft-js/tree/master/examples/draft-0-10-0/convertFromHTML)。
 
