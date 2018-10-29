@@ -34,3 +34,5 @@ placeholder?: string
 
 当编辑器输入为空时展示可选的placeholder字段。
 
+注意：你可以根据需要用CSS给placeholder添加style样式或隐藏placeholder。以富文本编辑器举例，
+
