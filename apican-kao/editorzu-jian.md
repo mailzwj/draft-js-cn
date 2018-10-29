@@ -44,3 +44,15 @@ textAlignment?: DraftTextAlignment
 
 可选地为编辑器设置覆盖文本的对齐方式。无论输入文本的默认文字方向如何，该对齐方式会应用到整个文本。
 
+如果你想在你的UI设计里将文本居中或者整合到某个方向可以使用textAlignment。
+
+如果这个属性的值未被设置，文本对齐方式将会基于编辑器的特性，以每个块为基准对齐。
+
+##### textDirectionality
+
+```
+textDirectionality?: DraftTextDirectionality
+```
+
+可选的为编辑器设置覆盖文本的方向属性。
+
