@@ -595,6 +595,35 @@
                                 <section class="normal markdown-section">
                                 
                                 <h2 id="&#x6570;&#x636E;&#x8F6C;&#x6362;">&#x6570;&#x636E;&#x8F6C;&#x6362;</h2>
+<p>&#x56E0;&#x4E3A;&#x5BCC;&#x6587;&#x672C;&#x7F16;&#x8F91;&#x5668;&#x4E0D;&#x53EF;&#x80FD;&#x51ED;&#x7A7A;&#x5B58;&#x5728;&#xFF0C;&#x56E0;&#x6B64;&#x5BF9;&#x5185;&#x5BB9;&#x8FDB;&#x884C;&#x4FDD;&#x5B58;&#x548C;&#x4F20;&#x8F93;&#x975E;&#x5E38;&#x91CD;&#x8981;&#xFF0C;&#x4F60;&#x53EF;&#x80FD;&#x5E0C;&#x671B;&#x5C06;<code>ContentState</code>&#x5BF9;&#x8C61;&#x8F6C;&#x6362;&#x4E3A;&#x539F;&#x751F;JS&#xFF0C;&#x6216;&#x8005;&#x53CD;&#x8FC7;&#x6765;&#x5C06;&#x539F;&#x751F;JS&#x8F6C;&#x6362;&#x4E3A;<code>ContentState</code>&#x5BF9;&#x8C61;&#x3002;</p>
+<p>&#x4E3A;&#x6B64;&#xFF0C;&#x6211;&#x4EEC;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x4E9B;&#x5B9E;&#x7528;&#x7684;&#x51FD;&#x6570;&#xFF0C;&#x5141;&#x8BB8;&#x4F60;&#x5B9E;&#x73B0;&#x8FD9;&#x4E9B;&#x8F6C;&#x6362;&#x3002;</p>
+<p>&#x6CE8;&#x610F;&#xFF0C;Draft&#x5E93;&#x76EE;&#x524D;&#x6682;&#x4E0D;&#x652F;&#x6301;markdown&#x6216;markup&#x6570;&#x636E;&#x7684;&#x8F6C;&#x6362;&#xFF0C;&#x56E0;&#x4E3A;&#x4E0D;&#x540C;&#x7684;&#x5BA2;&#x6237;&#x7AEF;&#x53EF;&#x80FD;&#x5BF9;&#x8FD9;&#x4E9B;&#x683C;&#x5F0F;&#x6709;&#x4E0D;&#x540C;&#x7684;&#x8981;&#x6C42;&#x3002;&#x53D6;&#x800C;&#x4EE3;&#x4E4B;&#xFF0C;&#x6211;&#x4EEC;&#x63D0;&#x4F9B;JS&#x5BF9;&#x8C61;&#xFF0C;&#x53EF;&#x4EE5;&#x6839;&#x636E;&#x9700;&#x8981;&#x8F6C;&#x6362;&#x4E3A;&#x5176;&#x4ED6;&#x683C;&#x5F0F;&#x3002;</p>
+<p><a href="https://github.com/facebook/draft-js/blob/master/src/model/encoding/RawDraftContentState.js" target="_blank"><code>RawDraftContentState</code></a>&#x5C01;&#x88C5;&#x4E86;&#x5185;&#x5BB9;&#x7684;&#x539F;&#x751F;&#x683C;&#x5F0F;&#x6240;&#x671F;&#x671B;&#x7684;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x3002;&#x539F;&#x59CB;&#x72B6;&#x6001;&#x5305;&#x542B;&#x5185;&#x5BB9;&#x5757;&#x5217;&#x8868;&#xFF0C;&#x4EE5;&#x53CA;&#x6240;&#x6709;&#x76F8;&#x5173;&#x5B9E;&#x4F53;&#x5BF9;&#x8C61;&#x7684;&#x6620;&#x5C04;&#x3002;</p>
+<h3 id="&#x65B9;&#x6CD5;">&#x65B9;&#x6CD5;</h3>
+<h4 id="convertfromraw">convertFromRaw</h4>
+<pre><code class="lang-js">convertFromRaw(rawState: RawDraftContentState): ContentState
+</code></pre>
+<p>&#x5C06;&#x4E00;&#x4E2A;&#x539F;&#x59CB;<code>state</code>&#x8F6C;&#x6362;&#x4E3A;<code>ContentState</code>&#x5BF9;&#x8C61;&#x3002;&#x5728;Draft&#x7F16;&#x8F91;&#x5668;&#x4E2D;&#x663E;&#x793A;&#x6570;&#x636E;&#x7684;&#x65F6;&#x5019;&#x975E;&#x5E38;&#x6709;&#x7528;&#x3002;</p>
+<h4 id="converttoraw">convertToRaw</h4>
+<pre><code class="lang-js">convertToRaw(contentState: ContentState): RawDraftContentState
+</code></pre>
+<p>&#x5C06;&#x4E00;&#x4E2A;<code>ContentState</code>&#x5BF9;&#x8C61;&#x8F6C;&#x6362;&#x4E3A;&#x539F;&#x751F;JS&#x7ED3;&#x6784;&#x3002;&#x5F53;&#x9700;&#x8981;&#x4FDD;&#x5B58;&#x7F16;&#x8F91;&#x5668;&#x72B6;&#x6001;&#x3001;&#x5C06;&#x7F16;&#x8F91;&#x6570;&#x636E;&#x8F6C;&#x6362;&#x4E3A;&#x5176;&#x4ED6;&#x683C;&#x5F0F;&#xFF0C;&#x6216;&#x5728;&#x5E94;&#x7528;&#x4E2D;&#x5F00;&#x53D1;&#x5176;&#x4ED6;&#x529F;&#x80FD;&#x65F6;&#xFF0C;&#x975E;&#x5E38;&#x6709;&#x7528;&#x3002;</p>
+<h4 id="convertfromhtml">convertFromHTML</h4>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> sampleMarkup =
+  <span class="hljs-string">&apos;&lt;b&gt;Bold text&lt;/b&gt;, &lt;i&gt;Italic text&lt;/i&gt;&lt;br/ &gt;&lt;br /&gt;&apos;</span> +
+  <span class="hljs-string">&apos;&lt;a href=&quot;http://www.facebook.com&quot;&gt;Example link&lt;/a&gt;&apos;</span>;
+
+<span class="hljs-keyword">const</span> blocksFromHTML = convertFromHTML(sampleMarkup);
+<span class="hljs-keyword">const</span> state = ContentState.createFromBlockArray(
+  blocksFromHTML.contentBlocks,
+  blocksFromHTML.entityMap
+);
+
+<span class="hljs-keyword">this</span>.state = {
+  editorState: EditorState.createWithContent(state),
+};
+</code></pre>
+<p>&#x5C06;&#x4E00;&#x6BB5;HTML&#x7247;&#x6BB5;&#x8F6C;&#x6362;&#x4E3A;&#x4E00;&#x4E2A;&#x5305;&#x542B;&#x4E24;&#x4E2A;key&#x7684;&#x5BF9;&#x8C61;&#x3002;&#x5176;&#x4E2D;&#x4E00;&#x4E2A;(<code>contentBlocks</code>)&#x4FDD;&#x5B58;<code>ContentBlock</code>&#x5BF9;&#x8C61;&#x6570;&#x7EC4;&#xFF0C;&#x53E6;&#x4E00;&#x4E2A;(<code>entityMap</code>)&#x4FDD;&#x5B58;&#x5BF9;entityMap&#x7684;&#x5F15;&#x7528;&#x3002;&#x518D;&#x4ECE;<code>contentBlocks</code>&#x548C;<code>entityMap</code>&#x6784;&#x9020;contentState&#xFF0C;&#x7136;&#x540E;&#x4F7F;&#x7528;&#x8BE5;contentState&#x66F4;&#x65B0;editorState&#x3002;&#x67E5;&#x770B;<a href="https://github.com/facebook/draft-js/tree/master/examples/draft-0-10-0/convertFromHTML" target="_blank">&#x5B8C;&#x6574;&#x793A;&#x4F8B;</a>&#x3002;</p>
 
                                 
                                 </section>
@@ -638,7 +667,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"数据转换","level":"1.4.10","depth":2,"next":{"title":"RichUtils","level":"1.4.11","depth":2,"path":"apican-kao/richutils.md","ref":"apican-kao/richutils.md","articles":[]},"previous":{"title":"CompositeDecorator","level":"1.4.9","depth":2,"path":"apican-kao/compositedecorator.md","ref":"apican-kao/compositedecorator.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"apican-kao/shu-ju-zhuan-huan.md","mtime":"2018-10-11T10:39:04.052Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-10-23T09:18:55.520Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"数据转换","level":"1.4.10","depth":2,"next":{"title":"RichUtils","level":"1.4.11","depth":2,"path":"apican-kao/richutils.md","ref":"apican-kao/richutils.md","articles":[]},"previous":{"title":"CompositeDecorator","level":"1.4.9","depth":2,"path":"apican-kao/compositedecorator.md","ref":"apican-kao/compositedecorator.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"apican-kao/shu-ju-zhuan-huan.md","mtime":"2018-10-29T06:21:06.205Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-10-30T07:53:34.363Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

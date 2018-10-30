@@ -595,6 +595,24 @@
                                 <section class="normal markdown-section">
                                 
                                 <h2 id="atomicblockutils">AtomicBlockUtils</h2>
+<p><code>AtomicBlockUtils</code>&#x6A21;&#x5757;&#x662F;&#x7528;&#x4E8E;&#x539F;&#x5B50;&#x5757;(atomic block)&#x7F16;&#x8F91;&#x7684;&#x4E00;&#x7EC4;&#x5B9E;&#x7528;&#x9759;&#x6001;&#x65B9;&#x6CD5;&#x7684;&#x96C6;&#x5408;&#x3002;</p>
+<p>&#x5728;&#x4F7F;&#x7528;&#x4E2D;&#xFF0C;&#x8FD9;&#x4E9B;&#x65B9;&#x6CD5;&#x63A5;&#x6536;&#x5177;&#x6709;&#x5173;&#x8054;&#x53C2;&#x6570;&#x7684;<code>EditorState</code>&#x5BF9;&#x8C61;&#xFF0C;&#x5E76;&#x8FD4;&#x56DE;<code>EditorState</code>&#x5BF9;&#x8C61;&#x3002;</p>
+<h3 id="&#x9759;&#x6001;&#x65B9;&#x6CD5;">&#x9759;&#x6001;&#x65B9;&#x6CD5;</h3>
+<h4 id="insertatomicblock">insertAtomicBlock</h4>
+<pre><code class="lang-js">insertAtomicBlock: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">
+  editorState: EditorState,
+  entityKey: string,
+  character: string
+</span>): <span class="hljs-title">EditorState</span>
+</span></code></pre>
+<h4 id="moveatomicblock">moveAtomicBlock</h4>
+<pre><code class="lang-js">moveAtomicBlock: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">
+  editorState: EditorState,
+  atomicBlock: ContentBlock,
+  targetRange: SelectionState,
+  insertionMode?: DraftInsertionType
+</span>): <span class="hljs-title">EditorState</span>
+</span></code></pre>
 
                                 
                                 </section>
@@ -638,7 +656,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"AtomicBlockUtils","level":"1.4.12","depth":2,"next":{"title":"KeyBindingUtil","level":"1.4.13","depth":2,"path":"apican-kao/keybindingutil.md","ref":"apican-kao/keybindingutil.md","articles":[]},"previous":{"title":"RichUtils","level":"1.4.11","depth":2,"path":"apican-kao/richutils.md","ref":"apican-kao/richutils.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"apican-kao/atomicblockutils.md","mtime":"2018-10-11T10:39:04.046Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-10-23T09:18:55.520Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"AtomicBlockUtils","level":"1.4.12","depth":2,"next":{"title":"KeyBindingUtil","level":"1.4.13","depth":2,"path":"apican-kao/keybindingutil.md","ref":"apican-kao/keybindingutil.md","articles":[]},"previous":{"title":"RichUtils","level":"1.4.11","depth":2,"path":"apican-kao/richutils.md","ref":"apican-kao/richutils.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"apican-kao/atomicblockutils.md","mtime":"2018-10-29T03:11:12.984Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-10-30T07:53:34.363Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

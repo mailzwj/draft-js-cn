@@ -595,6 +595,77 @@
                                 <section class="normal markdown-section">
                                 
                                 <h2 id="richutils">RichUtils</h2>
+<p><code>RichUtils</code>&#x662F;&#x4E3A;&#x5B9E;&#x73B0;&#x5BCC;&#x6587;&#x672C;&#x7F16;&#x8F91;&#x5668;&#x51C6;&#x5907;&#x7684;&#x4E00;&#x7EC4;&#x5B9E;&#x7528;&#x7684;&#x9759;&#x6001;&#x51FD;&#x6570;&#x96C6;&#x5408;&#x3002;</p>
+<p>&#x5728;&#x4F7F;&#x7528;&#x4E2D;&#xFF0C;&#x8FD9;&#x4E9B;&#x65B9;&#x6CD5;&#x63A5;&#x6536;&#x5E26;&#x6709;&#x76F8;&#x5173;&#x53C2;&#x6570;&#x7684;<code>EditorState</code>&#x5BF9;&#x8C61;&#xFF0C;&#x5E76;&#x4E14;&#x8FD4;&#x56DE;<code>EditorState</code>&#x5BF9;&#x8C61;&#x3002;</p>
+<h3 id="&#x9759;&#x6001;&#x65B9;&#x6CD5;">&#x9759;&#x6001;&#x65B9;&#x6CD5;</h3>
+<h4 id="currentblockcontainslink">currentBlockContainsLink</h4>
+<pre><code class="lang-js">currentBlockContainsLink(
+  editorState: EditorState
+): boolean
+</code></pre>
+<h4 id="getcurrentblocktype">getCurrentBlockType</h4>
+<pre><code class="lang-js">getCurrentBlockType(
+  editorState: EditorState
+): string
+</code></pre>
+<h4 id="handlekeycommand">handleKeyCommand</h4>
+<pre><code class="lang-js">handleKeyCommand(
+  editorState: EditorState,
+  command: string
+): EditorState?
+</code></pre>
+<h4 id="insertsoftnewline">insertSoftNewline</h4>
+<pre><code class="lang-js">insertSoftNewline(
+  editorState: EditorState
+): EditorState
+</code></pre>
+<h4 id="onbackspace">onBackspace</h4>
+<pre><code class="lang-js">onBackspace(
+  editorState: EditorState
+): EditorState?
+</code></pre>
+<h4 id="ondelete">onDelete</h4>
+<pre><code class="lang-js">onDelete(
+  editorState: EditorState
+): EditorState?
+</code></pre>
+<h4 id="ontab">onTab</h4>
+<pre><code class="lang-js">onTab(
+  event: SyntheticEvent,
+  editorState: EditorState,
+  maxDepth: integer
+): EditorState
+</code></pre>
+<h4 id="toggleblocktype">toggleBlockType</h4>
+<pre><code class="lang-js">toggleBlockType(
+  editorState: EditorState,
+  blockType: string
+): EditorState
+</code></pre>
+<h4 id="togglecode">toggleCode</h4>
+<pre><code class="lang-js">toggleCode(
+  editorState: EditorState
+): EditorState
+</code></pre>
+<h4 id="toggleinlinestyle">toggleInlineStyle</h4>
+<pre><code class="lang-js">toggleInlineStyle(
+  editorState: EditorState,
+  inlineStyle: string
+): EditorState
+</code></pre>
+<p>&#x5728;&#x9009;&#x4E2D;&#x533A;&#x57DF;&#x4E0A;&#x5207;&#x6362;&#x6307;&#x5B9A;&#x7684;&#x5185;&#x8054;&#x6837;&#x5F0F;&#x3002;&#x5982;&#x679C;&#x7528;&#x6237;&#x7684;&#x9009;&#x533A;&#x662F;&#x6298;&#x53E0;&#x7684;&#xFF0C;&#x5219;&#x5E94;&#x7528;&#x6216;&#x79FB;&#x9664;&#x5185;&#x90E8;&#x72B6;&#x6001;&#x7684;&#x6837;&#x5F0F;&#x3002;&#x5982;&#x679C;&#x9009;&#x533A;&#x6CA1;&#x6709;&#x6298;&#x53E0;&#xFF0C;&#x5219;&#x76F4;&#x63A5;&#x5C06;&#x66F4;&#x6539;&#x5E94;&#x7528;&#x4E8E;&#x6587;&#x6863;state&#x3002;</p>
+<h4 id="togglelink">toggleLink</h4>
+<pre><code class="lang-js">toggleLink(
+  editorState: EditorState,
+  targetSelection: SelectionState,
+  entityKey: string
+): EditorState
+</code></pre>
+<h4 id="trytoremoveblockstyle">tryToRemoveBlockStyle</h4>
+<pre><code class="lang-js">tryToRemoveBlockStyle(
+  editorState: EditorState
+): ContentState?
+</code></pre>
 
                                 
                                 </section>
@@ -638,7 +709,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"RichUtils","level":"1.4.11","depth":2,"next":{"title":"AtomicBlockUtils","level":"1.4.12","depth":2,"path":"apican-kao/atomicblockutils.md","ref":"apican-kao/atomicblockutils.md","articles":[]},"previous":{"title":"数据转换","level":"1.4.10","depth":2,"path":"apican-kao/shu-ju-zhuan-huan.md","ref":"apican-kao/shu-ju-zhuan-huan.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"apican-kao/richutils.md","mtime":"2018-10-11T10:39:04.051Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-10-23T09:18:55.520Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"RichUtils","level":"1.4.11","depth":2,"next":{"title":"AtomicBlockUtils","level":"1.4.12","depth":2,"path":"apican-kao/atomicblockutils.md","ref":"apican-kao/atomicblockutils.md","articles":[]},"previous":{"title":"数据转换","level":"1.4.10","depth":2,"path":"apican-kao/shu-ju-zhuan-huan.md","ref":"apican-kao/shu-ju-zhuan-huan.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"apican-kao/richutils.md","mtime":"2018-10-29T05:47:31.604Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-10-30T07:53:34.363Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
