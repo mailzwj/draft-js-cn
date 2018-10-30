@@ -90,7 +90,7 @@ customStyleMap?: Object
 autoCapitalize?: string
 ```
 
-设置是否将自动大写打开和它如何表现。更多有关平台可用性及使用信息可参照[MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Input#attr-autocapitalize)。
+设置是否将自动大写打开及其如何表现。更多有关平台可用性及使用信息可参照[MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Input#attr-autocapitalize)。
 
 #### autoComplete?: string
 
@@ -98,7 +98,19 @@ autoCapitalize?: string
 autoComplete?: string
 ```
 
-设置是否自动补全和它如何表现。更多有关平台可用性及使用信息可参照[MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Input#attr-autocomplete)。
+设置是否自动补全及其如何表现。更多有关平台可用性及使用信息可参照[MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Input#attr-autocomplete)。
+
+#### autoCorrect?: string
+
+```js
+autoCorrect?: string
+```
+
+设置是否自动校正及其如何表现。更多有关平台可用性及使用信息可参照MDN。
+
+
+
+
 
 
 
