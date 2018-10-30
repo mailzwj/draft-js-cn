@@ -176,17 +176,99 @@ handleReturn?: (e: SyntheticKeyboardEvent, editorState: EditorState) => DraftHan
 
 处理`RETURN` keydown事件。举例：从渲染的列表结果中选择一个提及标签，将提及实例应用到你的内容中。
 
+##### handleKeyCommand
 
+```js
+handleKeyCommand?: (command: string, editorState: EditorState, eventTimeStamp: number) => DraftHandleValue
+```
 
+处理命名的编辑器命令。有关使用详情参阅[高级用法：案件绑定](http://seejs.me/draft-js-cn/docs/gao-ji-yong-fa/an-jian-bang-ding.html)。
 
+##### handleBeforeInput
 
+```js
+handleBeforeInput?: (chars: string, editorState: EditorState, eventTimeStamp: number) => DraftHandleValue
+```
 
+处理从`beforeInput`事件中插入的字符。返回'handled'会导致`beforeInput`事件的默认行为被阻止。（即与事件上调用preventDefault方法相同）。举个例子：当用户在一个块的开头输入`-`的时候，你可以将ContentBlock转换为`unordered-list-item`。
 
+在Facebook中，我们还使用它将输入的ASCII引号转换为“智能”引号，也可以将表情符号转换为图片。
 
+##### handlePastedText
 
+```js
+handlePastedText?: (text: string, html?: string, editorState: EditorState) => DraftHandleValue
+```
 
+处理直接被粘贴到编辑器里面的文本或html（富文本）。返回true会阻止默认粘贴的表现。
 
+##### handlePastedFiles
 
+```js
+handlePastedFiles?: (files: Array<Blob>) => DraftHandleValue
+```
+
+处理直接被粘贴进编辑器的文件。
+
+##### handleDroppedFiles
+
+```js
+handleDroppedFiles?: (selection: SelectionState, files: Array<Blob>) => DraftHandleValue
+```
+
+处理被拖放进编辑器中的文件。
+
+##### handleDrop
+
+```js
+handleDrop?: (selection: SelectionState, dataTransfer: Object, isInternal: DraftDragType) => DraftHandleValue
+```
+
+处理其他拖拽操作。
+
+#### 键盘处理（可选）
+
+Draft为你提供了一套自定义`keyDown`处理程序来覆盖或重写默认的处理方式。
+
+##### keyBindingFn
+
+```js
+keyBindingFn?: (e: SyntheticKeyboardEvent) => ?string
+```
+
+这个方法为你暴露了`keyDown`事件的处理程序。如果指定事件发生，你可以执行自定义的逻辑并（或）返回一个与`DraftEditorCommand`一致的字符串，或者执行你自己创建的自定义编辑器指令。举例来说：在Facebook中，它被用来提供提及（当输入一个朋友名字时出现）自动补全菜单的键盘交互。你可以在[这里](http://seejs.me/draft-js-cn/docs/gao-ji-yong-fa/an-jian-bang-ding.html)找到更多详细解释。
+
+#### 鼠标事件
+
+#### onFocus
+
+```js
+onFocus?: (e: SyntheticFocusEvent) => void
+```
+
+#### onBlur
+
+```js
+onBlur?: (e: SyntheticFocusEvent) => void
+```
+
+#### 方法
+
+##### focus
+
+```js
+focus(): void
+```
+
+编辑器强制获取焦点。
+
+##### blur
+
+```js
+blur(): void
+```
+
+从编辑器移除焦点。
 
 
 
