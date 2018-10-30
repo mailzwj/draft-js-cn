@@ -150,7 +150,7 @@ stripPastedStyles?: boolean
 
 ##### ARIA props
 
-这些props允许你在你的编辑器上设置辅助功能。在[DraftEditorProps](https://github.com/facebook/draft-js/blob/master/src/component/base/DraftEditorProps.js)上查看详尽的有关支持的属性。
+这些prop允许你在你的编辑器上设置辅助功能。在[DraftEditorProps](https://github.com/facebook/draft-js/blob/master/src/component/base/DraftEditorProps.js)上查看详尽的有关支持的属性。
 
 ##### editorKey
 
@@ -164,11 +164,17 @@ editorKey?: string
 
 如果你设置了这个prop，那么这里的key应该是每个编辑器唯一的，因为它将会确定在编辑器中粘贴文本时是否要保留样式。
 
+#### 可取消的处理程序（可选）
 
+这些prop函数为一小部分有用的事件提供了一些自定义事件处理程序。通过在处理程序中返回`'handled'`，你可以该事件已被处理，Draft核心将不会做任何事情。通过返回`'not-handled'`，你可以将事件推到Draft中去处理。
 
+##### handleReturn
 
+```js
+handleReturn?: (e: SyntheticKeyboardEvent, editorState: EditorState) => DraftHandleValue
+```
 
-
+处理`RETURN` keydown事件。举例：从渲染的列表结果中选择一个提及标签，将提及实例应用到你的内容中。
 
 
 
