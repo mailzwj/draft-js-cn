@@ -50,7 +50,7 @@ textAlignment?: DraftTextAlignment
 
 ##### textDirectionality
 
-```
+```js
 textDirectionality?: DraftTextDirectionality
 ```
 
@@ -60,9 +60,65 @@ textDirectionality?: DraftTextDirectionality
 
 ##### blockRendererFn
 
-```
+```js
 blockRendererFn?: (block: ContentBlock) => ?Object
 ```
+
+可选地设置一个函数来定义自定义块的呈现。有关使用的详细信息，请参阅[高级用法：自定义块组件](http://seejs.me/draft-js-cn/docs/gao-ji-yong-fa/zi-ding-yi-kuai-zu-jian.html)。
+
+##### blockStyleFn
+
+```js
+blockStyleFn?: (block: ContentBlock) => string
+```
+
+当给定块渲染时，可选地设置一个函数来定义它的类名。有关使用的详细信息，请参阅[高级用法：块级样式](http://seejs.me/draft-js-cn/docs/gao-ji-yong-fa/kuai-ji-yang-shi.html)。
+
+##### customStyleMap
+
+```js
+customStyleMap?: Object
+```
+
+可选地设置一个内联样式表，以应用到具有指定样式的文本范围。有关使用的详细信息，请参阅[高级用法：复杂内联样式](http://seejs.me/draft-js-cn/docs/gao-ji-yong-fa/fu-za-nei-lian-yang-shi.html)。
+
+#### 行为（可选）
+
+#### autoCapitalize?: string
+
+```js
+autoCapitalize?: string
+```
+
+设置是否将自动大写打开和它如何表现。更多有关平台可用性及使用信息可参照[MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Input#attr-autocapitalize)。
+
+#### autoComplete?: string
+
+```js
+autoComplete?: string
+```
+
+设置是否自动补全和它如何表现。更多有关平台可用性及使用信息可参照[MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Input#attr-autocomplete)。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
