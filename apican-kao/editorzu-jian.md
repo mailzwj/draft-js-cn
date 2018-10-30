@@ -106,7 +106,67 @@ autoComplete?: string
 autoCorrect?: string
 ```
 
-设置是否自动校正及其如何表现。更多有关平台可用性及使用信息可参照MDN。
+设置是否自动校正及其如何表现。更多有关平台可用性及使用信息可参照[MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Input#attr-autocorrect)。
+
+##### readOnly
+
+```js
+readOnly?: boolean
+```
+
+设置是否将编辑器渲染为禁止所有编辑行为的静态DOM。
+
+当[自定义块组件](http://seejs.me/draft-js-cn/docs/gao-ji-yong-fa/zi-ding-yi-kuai-zu-jian.html)相互作用或你只想展示静态用例的内容时，这会很有用。
+
+默认值为`false`。
+
+##### spellCheck
+
+```js
+spellCheck?: boolean
+```
+
+设置你的编辑器是否启用拼写检查。
+
+注意，在OSX Safari中，打开拼写检查也会打开自动校正功能，如果用户已将其打开。同时也要注意到，IE中始终禁止拼写检查，因为在IE中不会触发观察拼写检查事件所需的事件。
+
+默认值为`false`。
+
+##### stripPastedStyles
+
+```js
+stripPastedStyles?: boolean
+```
+
+设置是否删除除粘贴内容的纯文本外的所有信息。
+
+如果你的编辑器不支持丰富的样式，则应该使用它。
+
+默认值为`false`。
+
+#### DOM和辅助功能（可选）
+
+##### tabIndex
+
+##### ARIA props
+
+这些props允许你在你的编辑器上设置辅助功能。在[DraftEditorProps](https://github.com/facebook/draft-js/blob/master/src/component/base/DraftEditorProps.js)上查看详尽的有关支持的属性。
+
+##### editorKey
+
+```js
+editorKey?: string
+```
+
+你可能不会手动把`editorKey`设置到`<Editor />`上，除非你正在服务端渲染Draft组件。如果是这样，你必须设置这个prop来避免服务端和客户端之间不匹配。
+
+如果没有设置这个key，当组件渲染和被分配作为编辑器的`<DraftEditorContents />`组件的一个prop的时候，这个key会自动生成。
+
+如果你设置了这个prop，那么这里的key应该是每个编辑器唯一的，因为它将会确定在编辑器中粘贴文本时是否要保留样式。
+
+
+
+
 
 
 
