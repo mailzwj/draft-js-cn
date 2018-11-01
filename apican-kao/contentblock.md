@@ -111,6 +111,14 @@ getLength(): number
 
 这个值使用标准的JavaScript字符串的`length`属性，因此不支持Unicode——Unicode字符将被计算为两个字符长度。
 
+#### getDepth\(\) {#getdepth}
+
+```js
+getDepth(): number
+```
+
+如果有，则返回当前块的深度值。当前只适用于列表项。
+
 #### getInlineStyleAt\(\) {#getinlinestyleat}
 
 ```js
