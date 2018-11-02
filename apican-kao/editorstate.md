@@ -16,39 +16,39 @@
 
 ### 概览
 
-_常用的实例方法  
+_常用的实例方法    
 _
 
 下面这个列表包括了EditorState对象最常用的实例方法。
 
-* getCurrentContent\(\): ContentState
-* getSelection\(\): SelectionState
-* getCurrentInlineStyle\(\): DraftInlineStyle
-* getBlockTree\(\): OrderedMap
+* [getCurrentContent\(\): ContentState](#getcurrentcontent)
+* [getSelection\(\): SelectionState](#getselection)
+* [getCurrentInlineStyle\(\): DraftInlineStyle](#getcurrentinlinestyle)
+* [getBlockTree\(\): OrderedMap](#getblocktree)
 
-_静态方法  
+_静态方法    
 _
 
-* static createWithContent\(contentState, ?decorator\): EditorState
-* static create\(config\): EditorState
-* static push\(editorState, contentState, changeType\): EditorState
-* static undo\(editorState\): EditorState
-* static redo\(editorState\): EditorState
-* static acceptSelection\(editorState, selectionState\): EditorState
-* static forceSelection\(editorState, selectionState\): EditorState
-* static moveSelectionToEnd\(editorState\): EditorState
-* static moveFocusToEnd\(editorState\): EditorState
-* static setInlineStyleOverride\(editorState, inlineStyleOverride\): EditorState
-* static set\(editorState, EditorStateRecordType\): EditorState
+* [static createWithContent\(contentState, ?decorator\): EditorState](#createwithcontent)
+* [static create\(config\): EditorState](#create)
+* [static push\(editorState, contentState, changeType\): EditorState](#push)
+* [static undo\(editorState\): EditorState](#撤销（undo）)
+* [static redo\(editorState\): EditorState](#chongzuoredo)
+* [static acceptSelection\(editorState, selectionState\): EditorState](#accepteselection)
+* [static forceSelection\(editorState, selectionState\): EditorState](#forceselection)
+* [static moveSelectionToEnd\(editorState\): EditorState](#moveselectiontoend)
+* [static moveFocusToEnd\(editorState\): EditorState](#movefocustoend)
+* [static setInlineStyleOverride\(editorState, inlineStyleOverride\): EditorState](#setinlinestyleoverride)
+* [static set\(editorState, EditorStateRecordType\): EditorState](#setmethods)
 
-_属性  
+_属性    
 _
 
 > 注意
 >
 > 通过`EditorState`静态方法设置属性，而不是直接使用Immutable（不可变的） API。这意味着使用`EditorState.set`去传递EditorState实例新的属性。
 >
-> **例子  
+> **例子    
 > **
 >
 > ```js
@@ -56,19 +56,19 @@ _
 > const editorStateWithoutUndo = EditorState.set(editorState, {allowUndo: false});
 > ```
 
-* allowUndo
-* currentContent
-* decorator
-* directionMap
-* forceSelection
-* inCompositionMode
-* inlineStyleOverride
-* lastChangeType
-* nativelyRenderedContent
-* redoStack
-* selection
-* treeMap
-* undoStack
+* [allowUndo](#allowundo)
+* [currentContent](#currentcontent)
+* [decorator](#decorator)
+* [directionMap](#directionmap)
+* [forceSelection](#propertyfs)
+* [inCompositionMode](#incompositionmode)
+* [inlineStyleOverride](#inlinestyleoverride)
+* [lastChangeType](#lastchangetype)
+* [nativelyRenderedContent](#nativelyrenderedcontent)
+* [redoStack](#redostack)
+* [selection](#propertyselection)
+* [treeMap](#treemap)
+* [undoStack](#undostack)
 
 ### 常用实例方法
 
@@ -80,9 +80,7 @@ getCurrentContent(): ContentState
 
 返回当前编辑器的内容。
 
-#### getSelection
-
-{\#getselection}
+#### getSelection {#getselection}
 
 ```js
 getSelection(): SelectionState
@@ -165,7 +163,7 @@ static push(
 
 必须使用此方法将所有的内容改变应用到EditorState中。
 
-_需要重命名  
+_需要重命名    
 _
 
 #### 撤销（undo）
@@ -180,9 +178,7 @@ static undo(editorState: EditorState): EditorState
 
 现有的`currentContent`被推到重做栈上。
 
-#### 重做（redo）
-
-{\#redo}
+#### 重做（redo） {#chongzuoredo}
 
 ```js
 static redo(editorState: EditorState): EditorState
@@ -244,7 +240,7 @@ static setInlineStyleOverride(editorState: EditorState, inlineStyleOverride: Dra
 
 返回一个新的`EditorState`对象，该对象中应用了指定的`DraftInlineStyle`，此DraftInlineStyle作为下一个插入字符应用的内联样式集。
 
-#### set {#set}
+#### set {#setmethods}
 
 ```js
 static set(editorState: EditorState, options: EditorStateRecordType): EditorState
@@ -304,7 +300,7 @@ getDirectionMap()
 
 你不应该手动管理它。
 
-#### forceSelection {#propertyforceselection}
+#### forceSelection {#propertyfs}
 
 ```js
 forceSelection: boolean;
@@ -368,7 +364,7 @@ getRedoStack()
 
 请参阅[undoStack](#undostack)。
 
-#### selection {#selection}
+#### selection {#propertyselection}
 
 ```js
 selection: SelectionState;
