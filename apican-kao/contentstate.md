@@ -101,3 +101,13 @@ getBlockMap(): BlockMap
 
 多数情况下，你应该能够使用下面的快捷方法来定位特定的`ContentBlock`对象或获取有关内容状态的信息。
 
+#### getSelectionBefore {#getselectionbefore}
+
+```js
+getSelectionBefore(): SelectionState
+```
+
+返回渲染`blockMap`之前编辑器中显示的`SelectionState`。
+
+
+
