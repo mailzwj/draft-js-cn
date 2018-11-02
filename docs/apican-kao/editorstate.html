@@ -595,6 +595,244 @@
                                 <section class="normal markdown-section">
                                 
                                 <h2 id="editorstate">EditorState</h2>
+<p><code>EditorState</code>&#x662F;&#x7F16;&#x8F91;&#x5668;&#x9876;&#x7EA7;&#x7684;state&#x5BF9;&#x8C61;&#x3002;</p>
+<p>&#x5B83;&#x662F;&#x4E00;&#x4E2A;&#x4E0D;&#x53EF;&#x53D8;&#x7684;<a href="http://facebook.github.io/immutable-js/docs/#/Record/Record" target="_blank">Record</a>&#x4EE3;&#x8868;&#x4E86;Draft&#x7F16;&#x8F91;&#x5668;&#x7684;&#x6574;&#x4F53;&#x72B6;&#x6001;&#xFF0C;&#x5305;&#x62EC;&#x4E86;&#xFF1A;</p>
+<ul>
+<li>The current text content state &#xFF08;&#x5F53;&#x524D;&#x6587;&#x672C;&#x5185;&#x5BB9;&#x72B6;&#x6001;&#xFF09;</li>
+<li>The current selection state &#xFF08;&#x5F53;&#x524D;&#x9009;&#x62E9;&#x72B6;&#x6001;&#xFF09;</li>
+<li>The fully decorated representation of the contents &#xFF08;&#x5185;&#x5BB9;&#x5B8C;&#x6574;&#x7684;&#x8868;&#x793A;&#x5F62;&#x5F0F;&#xFF09;</li>
+<li>Undo/redo stacks &#xFF08;&#x64A4;&#x9500;/&#x91CD;&#x505A;&#x6808;&#xFF09;</li>
+<li>The most recent type of change made to the contents &#xFF08;&#x6700;&#x8FD1;&#x4E00;&#x6B21;&#x5BF9;&#x5185;&#x5BB9;&#x8FDB;&#x884C;&#x66F4;&#x6539;&#x7684;&#x7C7B;&#x578B;&#xFF09;</li>
+</ul>
+<blockquote>
+<p>&#x6CE8;&#x610F;</p>
+<p>&#x5F53;&#x4F7F;&#x7528;EditorState&#x5BF9;&#x8C61;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4F60;&#x4E0D;&#x5E94;&#x8BE5;&#x4F7F;&#x7528;Immutable&#xFF08;&#x4E0D;&#x53EF;&#x53D8;&#x7684;&#xFF09; API&#xFF0C;&#x800C;&#x662F;&#x4F7F;&#x7528;&#x4E0B;&#x9762;&#x5B9E;&#x4F8B;&#x7684;getters&#x548C;&#x9759;&#x6001;&#x65B9;&#x6CD5;&#x6765;&#x4EE3;&#x66FF;&#x5B83;&#x3002;</p>
+</blockquote>
+<h3 id="&#x6982;&#x89C8;">&#x6982;&#x89C8;</h3>
+<p><em>&#x5E38;&#x7528;&#x7684;&#x5B9E;&#x4F8B;&#x65B9;&#x6CD5;      
+</em></p>
+<p>&#x4E0B;&#x9762;&#x8FD9;&#x4E2A;&#x5217;&#x8868;&#x5305;&#x62EC;&#x4E86;EditorState&#x5BF9;&#x8C61;&#x6700;&#x5E38;&#x7528;&#x7684;&#x5B9E;&#x4F8B;&#x65B9;&#x6CD5;&#x3002;</p>
+<ul>
+<li><a href="#getcurrentcontent">getCurrentContent(): ContentState</a></li>
+<li><a href="#getselection">getSelection(): SelectionState</a></li>
+<li><a href="#getcurrentinlinestyle">getCurrentInlineStyle(): DraftInlineStyle</a></li>
+<li><a href="#getblocktree">getBlockTree(): OrderedMap</a></li>
+</ul>
+<p><em>&#x9759;&#x6001;&#x65B9;&#x6CD5;      
+</em></p>
+<ul>
+<li><a href="#createwithcontent">static createWithContent(contentState, ?decorator): EditorState</a></li>
+<li><a href="#create">static create(config): EditorState</a></li>
+<li><a href="#push">static push(editorState, contentState, changeType): EditorState</a></li>
+<li><a href="#&#x64A4;&#x9500;&#xFF08;undo&#xFF09;">static undo(editorState): EditorState</a></li>
+<li><a href="#chongzuoredo">static redo(editorState): EditorState</a></li>
+<li><a href="#accepteselection">static acceptSelection(editorState, selectionState): EditorState</a></li>
+<li><a href="#forceselection">static forceSelection(editorState, selectionState): EditorState</a></li>
+<li><a href="#moveselectiontoend">static moveSelectionToEnd(editorState): EditorState</a></li>
+<li><a href="#movefocustoend">static moveFocusToEnd(editorState): EditorState</a></li>
+<li><a href="#setinlinestyleoverride">static setInlineStyleOverride(editorState, inlineStyleOverride): EditorState</a></li>
+<li><a href="#setmethods">static set(editorState, EditorStateRecordType): EditorState</a></li>
+</ul>
+<p><em>&#x5C5E;&#x6027;      
+</em></p>
+<blockquote>
+<p>&#x6CE8;&#x610F;</p>
+<p>&#x901A;&#x8FC7;<code>EditorState</code>&#x9759;&#x6001;&#x65B9;&#x6CD5;&#x8BBE;&#x7F6E;&#x5C5E;&#x6027;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x76F4;&#x63A5;&#x4F7F;&#x7528;Immutable&#xFF08;&#x4E0D;&#x53EF;&#x53D8;&#x7684;&#xFF09; API&#x3002;&#x8FD9;&#x610F;&#x5473;&#x7740;&#x4F7F;&#x7528;<code>EditorState.set</code>&#x53BB;&#x4F20;&#x9012;EditorState&#x5B9E;&#x4F8B;&#x65B0;&#x7684;&#x5C5E;&#x6027;&#x3002;</p>
+<p><strong>&#x4F8B;&#x5B50;      
+</strong></p>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> editorState = EditorState.createEmpty();
+<span class="hljs-keyword">const</span> editorStateWithoutUndo = EditorState.set(editorState, {allowUndo: <span class="hljs-literal">false</span>});
+</code></pre>
+</blockquote>
+<ul>
+<li><a href="#allowundo">allowUndo</a></li>
+<li><a href="#currentcontent">currentContent</a></li>
+<li><a href="#decorator">decorator</a></li>
+<li><a href="#directionmap">directionMap</a></li>
+<li><a href="#propertyfs">forceSelection</a></li>
+<li><a href="#incompositionmode">inCompositionMode</a></li>
+<li><a href="#inlinestyleoverride">inlineStyleOverride</a></li>
+<li><a href="#lastchangetype">lastChangeType</a></li>
+<li><a href="#nativelyrenderedcontent">nativelyRenderedContent</a></li>
+<li><a href="#redostack">redoStack</a></li>
+<li><a href="#propertyselection">selection</a></li>
+<li><a href="#treemap">treeMap</a></li>
+<li><a href="#undostack">undoStack</a></li>
+</ul>
+<h3 id="&#x5E38;&#x7528;&#x5B9E;&#x4F8B;&#x65B9;&#x6CD5;">&#x5E38;&#x7528;&#x5B9E;&#x4F8B;&#x65B9;&#x6CD5;</h3>
+<h4 id="getcurrentcontent">getCurrentContent </h4>
+<pre><code class="lang-js">getCurrentContent(): ContentState
+</code></pre>
+<p>&#x8FD4;&#x56DE;&#x5F53;&#x524D;&#x7F16;&#x8F91;&#x5668;&#x7684;&#x5185;&#x5BB9;&#x3002;</p>
+<h4 id="getselection">getSelection </h4>
+<pre><code class="lang-js">getSelection(): SelectionState
+</code></pre>
+<p>&#x8FD4;&#x56DE;&#x5F53;&#x524D;&#x7F16;&#x8F91;&#x5668;&#x5149;&#x6807;/&#x9009;&#x62E9;&#x7684;&#x72B6;&#x6001;&#x3002;</p>
+<h4 id="getcurrentinlinestyle">getCurrentInlineStyle</h4>
+<pre><code class="lang-js">getCurrentInlineStyle(): DraftInlineStyle
+</code></pre>
+<p>&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x4EE3;&#x8868;&#x7740;&#x7F16;&#x8F91;&#x5668;&#x201C;&#x5F53;&#x524D;&#x201D;&#x5185;&#x8054;&#x6837;&#x5F0F;&#x7684;<code>OrderedSet&lt;string&gt;</code>&#x3002;</p>
+<p>&#x4E3A;&#x5F53;&#x524D;<code>ContentState</code>&#x548C;<code>SelectionState</code>&#x63D2;&#x5165;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;&#xFF0C;&#x5E76;&#x4E14;&#x8003;&#x8651;&#x4EFB;&#x4F55;&#x9700;&#x8981;&#x88AB;&#x5E94;&#x7528;&#x7684;&#x5185;&#x8054;&#x6837;&#x5F0F;&#x91CD;&#x5199;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x8FD9;&#x4E2A;&#x5185;&#x8054;&#x6837;&#x5F0F;&#x7684;&#x503C;&#x5C06;&#x4F1A;&#x88AB;&#x7528;&#x5230;&#x3002;</p>
+<h4 id="getblocktree">getBlockTree</h4>
+<pre><code class="lang-js">getBlockTree(blockKey: string): List;
+</code></pre>
+<p>&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x5173;&#x4E8E;&#x88C5;&#x9970;&#xFF08;decorated&#xFF09;&#x548C;&#x6837;&#x5F0F;&#xFF08;styuled&#xFF09;&#x8303;&#x56F4;&#x7684;&#x4E0D;&#x53EF;&#x53D8;&#x7684;&#x5217;&#x8868;&#x3002;&#x8FD9;&#x88AB;&#x7528;&#x6765;&#x6E32;&#x67D3;&#xFF0C;&#x5E76;&#x57FA;&#x4E8E;<code>currentContent</code>&#x548C;<code>decorator</code>&#x751F;&#x6210;&#x3002;</p>
+<p>&#x5728;&#x6E32;&#x67D3;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x8FD9;&#x4E2A;&#x5BF9;&#x8C61;&#x7528;&#x4E8E;&#x5C06;&#x5185;&#x5BB9;&#x5206;&#x6210;&#x9002;&#x5F53;&#x7684;&#x5757;&#x3001;&#x88C5;&#x9970;&#x5668;&#x548C;&#x6837;&#x5F0F;&#xFF08;styled&#xFF09;&#x8303;&#x56F4;&#x7EC4;&#x4EF6;&#x3002;</p>
+<h3 id="&#x9759;&#x6001;&#x65B9;&#x6CD5;">&#x9759;&#x6001;&#x65B9;&#x6CD5;</h3>
+<h4 id="createempty">createEmpty</h4>
+<pre><code class="lang-js"><span class="hljs-keyword">static</span> createEmpty(decorator?: DraftDecoratorType): EditorState
+</code></pre>
+<p>&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x6709;&#x7A7A;<code>ContentState</code>&#x548C;&#x9ED8;&#x8BA4;&#x914D;&#x7F6E;&#x7684;&#x65B0;&#x7684;<code>EditorState</code>&#x5BF9;&#x8C61;&#x3002;</p>
+<h4 id="createwithcontent">createWithContent</h4>
+<pre><code class="lang-js"><span class="hljs-keyword">static</span> createWithContent(
+  contentState: ContentState,
+  decorator?: DraftDecoratorType
+): EditorState
+</code></pre>
+<p>&#x57FA;&#x4E8E;<code>ContentState</code>&#x548C;&#x63D0;&#x4F9B;&#x7684;&#x88C5;&#x9970;&#x5668;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x65B0;&#x7684;<code>EditorState</code>&#x5BF9;&#x8C61;&#x3002;</p>
+<h4 id="create">create</h4>
+<pre><code class="lang-js"><span class="hljs-keyword">static</span> create(config: EditorStateCreationConfig): EditorState
+</code></pre>
+<p>&#x57FA;&#x4E8E;&#x914D;&#x7F6E;&#x5BF9;&#x8C61;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x65B0;&#x7684;<code>EditorState</code>&#x5BF9;&#x8C61;&#x3002;&#x5982;&#x679C;&#x4F60;&#x9700;&#x8981;&#x81EA;&#x5B9A;&#x4E49;&#x914D;&#x7F6E;&#x901A;&#x8FC7;&#x4E0A;&#x8FF0;&#x65B9;&#x6CD5;&#x4E0D;&#x53EF;&#x7528;&#xFF0C;&#x90A3;&#x4F60;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x8FD9;&#x4E2A;&#x3002;</p>
+<h4 id="push">push</h4>
+<pre><code class="lang-js"><span class="hljs-keyword">static</span> push(
+  editorState: EditorState,
+  contentState: ContentState,
+  changeType: EditorChangeType
+): EditorState
+</code></pre>
+<p>&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x65B0;&#x7684;<code>EditorState</code>&#x5BF9;&#x8C61;&#xFF0C;&#x8BE5;&#x5BF9;&#x8C61;&#x4F7F;&#x7528;&#x6307;&#x5B9A;&#x7684;<code>ContentState</code>&#x4F5C;&#x4E3A;&#x65B0;&#x7684;<code>currentContent</code>&#x3002;&#x57FA;&#x4E8E;<code>changeType</code>&#xFF0C;&#x8FD9;&#x4E2A;<code>ContentState</code>&#x53EF;&#x80FD;&#x4F1A;&#x88AB;&#x89C6;&#x4E3A;&#x64A4;&#x9500;/&#x91CD;&#x505A;&#x7684;&#x8FB9;&#x754C;&#x72B6;&#x6001;&#x3002;</p>
+<p>&#x5FC5;&#x987B;&#x4F7F;&#x7528;&#x6B64;&#x65B9;&#x6CD5;&#x5C06;&#x6240;&#x6709;&#x7684;&#x5185;&#x5BB9;&#x6539;&#x53D8;&#x5E94;&#x7528;&#x5230;EditorState&#x4E2D;&#x3002;</p>
+<p><em>&#x9700;&#x8981;&#x91CD;&#x547D;&#x540D;      
+</em></p>
+<h4 id="&#x64A4;&#x9500;&#xFF08;undo&#xFF09;">&#x64A4;&#x9500;&#xFF08;undo&#xFF09;</h4>
+<pre><code class="lang-js"><span class="hljs-keyword">static</span> undo(editorState: EditorState): EditorState
+</code></pre>
+<p>&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x65B0;&#x7684;<code>EditorState</code>&#x5BF9;&#x8C61;&#xFF0C;&#x8BE5;&#x5BF9;&#x8C61;&#x4F7F;&#x7528;&#x64A4;&#x9500;&#x6808;&#x9876;&#x90E8;&#x4F5C;&#x4E3A;&#x65B0;&#x7684;<code>currentContent</code>&#x3002;</p>
+<p>&#x73B0;&#x6709;&#x7684;<code>currentContent</code>&#x88AB;&#x63A8;&#x5230;&#x91CD;&#x505A;&#x6808;&#x4E0A;&#x3002;</p>
+<h4 id="chongzuoredo">&#x91CD;&#x505A;&#xFF08;redo&#xFF09; </h4>
+<pre><code class="lang-js"><span class="hljs-keyword">static</span> redo(editorState: EditorState): EditorState
+</code></pre>
+<p>&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x65B0;&#x7684;<code>EditorState</code>&#x5BF9;&#x8C61;&#xFF0C;&#x8BE5;&#x5BF9;&#x8C61;&#x4F7F;&#x7528;&#x91CD;&#x505A;&#x6808;&#x9876;&#x90E8;&#x4F5C;&#x4E3A;&#x65B0;&#x7684;<code>currentContent</code>&#x3002;</p>
+<p>&#x73B0;&#x6709;&#x7684;<code>currentContent</code>&#x88AB;&#x63A8;&#x5230;&#x64A4;&#x9500;&#x6808;&#x4E0A;&#x3002;</p>
+<h4 id="accepteselection">acceptSelection </h4>
+<pre><code class="lang-js"><span class="hljs-keyword">static</span> acceptSelection(
+editorState: EditorState,
+selectionState: SelectionState
+): EditorState
+</code></pre>
+<p>&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x65B0;&#x7684;<code>EditorState</code>&#x5BF9;&#x8C61;&#xFF0C;&#x8BE5;&#x5BF9;&#x8C61;&#x4F7F;&#x7528;&#x6307;&#x5B9A;&#x7684;<code>SelectionState</code>&#xFF0C;&#x4F46;&#x662F;&#x4E0D;&#x9700;&#x8981;&#x8FDB;&#x884C;&#x9009;&#x62E9;&#x3002;</p>
+<p>&#x4E3E;&#x4E2A;&#x4F8B;&#x5B50;&#xFF0C;&#x5F53;DOM&#x9009;&#x62E9;&#x5728;&#x6211;&#x4EEC;&#x63A7;&#x5236;&#x4E4B;&#x5916;&#x6539;&#x53D8;&#x65F6;&#x8FD9;&#x4F1A;&#x6709;&#x7528;&#xFF0C;&#x5E76;&#x4E14;&#x4E0D;&#x9700;&#x8981;&#x91CD;&#x65B0;&#x6E32;&#x67D3;&#x3002;</p>
+<h4 id="forceselection">forceSelection </h4>
+<pre><code class="lang-js"><span class="hljs-keyword">static</span> forceSelection(
+editorState: EditorState,
+selectionState: SelectionState
+): EditorState
+</code></pre>
+<p>&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x65B0;&#x7684;<code>EditorState</code>&#x5BF9;&#x8C61;&#xFF0C;&#x8BE5;&#x5BF9;&#x8C61;&#x4F7F;&#x7528;&#x6307;&#x5B9A;&#x7684;<code>SelectionState</code>&#xFF0C;&#x5E76;&#x5F3A;&#x5236;&#x9009;&#x62E9;&#x88AB;&#x6E32;&#x67D3;&#x3002;</p>
+<h4 id="moveselectiontoend">moveSelectionToEnd </h4>
+<pre><code class="lang-js"><span class="hljs-keyword">static</span> moveSelectionToEnd(editorState: EditorState): EditorState
+</code></pre>
+<p>&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x65B0;&#x7684;<code>EditorState</code>&#x5BF9;&#x8C61;&#xFF0C;&#x5176;&#x9009;&#x62E9;&#xFF08;selection&#xFF09;&#x5728;&#x7ED3;&#x5C3E;&#x5904;&#x3002;</p>
+<p>&#x79FB;&#x52A8;&#x9009;&#x62E9;&#xFF08;selection&#xFF09;&#x5230;&#x7F16;&#x8F91;&#x5668;&#x672B;&#x5C3E;&#x4E14;&#x4E0D;&#x9700;&#x8981;&#x5F3A;&#x5236;&#x805A;&#x7126;&#xFF08;focus&#xFF09;&#x3002;</p>
+<h4 id="movefocustoend">moveFocusToEnd </h4>
+<pre><code class="lang-js"><span class="hljs-keyword">static</span> moveFocusToEnd(editorState: EditorState): EditorState
+</code></pre>
+<p>&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x65B0;&#x7684;<code>EditorState</code>&#x5BF9;&#x8C61;&#xFF0C;&#x5176;&#x9009;&#x62E9;&#xFF08;selection&#xFF09;&#x5728;&#x6700;&#x540E;&#x5E76;&#x4E14;&#x805A;&#x7126;&#xFF08;focus&#xFF09;&#x3002;</p>
+<p>&#x8FD9;&#x9002;&#x7528;&#x4E8E;&#x6211;&#x4EEC;&#x60F3;&#x4EE5;&#x7F16;&#x7A0B;&#x65B9;&#x5F0F;&#x805A;&#x7126;&#x8F93;&#x5165;&#x7684;&#x573A;&#x666F;&#x4E2D;&#xFF0C;&#x4E14;&#x5728;&#x5141;&#x8BB8;&#x7528;&#x6237;&#x8FDE;&#x7EED;&#x65E0;&#x7F1D;&#x5DE5;&#x4F5C;&#x4E0A;&#x4E5F;&#x662F;&#x6709;&#x7528;&#x7684;&#x3002;</p>
+<h4 id="setinlinestyleoverride">setInlineStyleOverride </h4>
+<pre><code class="lang-js"><span class="hljs-keyword">static</span> setInlineStyleOverride(editorState: EditorState, inlineStyleOverride: DraftInlineStyle): EditorState
+</code></pre>
+<p>&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x65B0;&#x7684;<code>EditorState</code>&#x5BF9;&#x8C61;&#xFF0C;&#x8BE5;&#x5BF9;&#x8C61;&#x4E2D;&#x5E94;&#x7528;&#x4E86;&#x6307;&#x5B9A;&#x7684;<code>DraftInlineStyle</code>&#xFF0C;&#x6B64;DraftInlineStyle&#x4F5C;&#x4E3A;&#x4E0B;&#x4E00;&#x4E2A;&#x63D2;&#x5165;&#x5B57;&#x7B26;&#x5E94;&#x7528;&#x7684;&#x5185;&#x8054;&#x6837;&#x5F0F;&#x96C6;&#x3002;</p>
+<h4 id="setmethods">set </h4>
+<pre><code class="lang-js"><span class="hljs-keyword">static</span> set(editorState: EditorState, options: EditorStateRecordType): EditorState
+</code></pre>
+<p>&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x4F20;&#x5165;&#x65B0;&#x9009;&#x9879;&#x7684;&#x65B0;<code>EditorState</code>&#x5BF9;&#x8C61;&#x3002;&#x8BE5;&#x65B9;&#x6CD5;&#x7EE7;&#x627F;&#x81EA;&#x4E0D;&#x53EF;&#x53D8;&#x7684;&#x8BB0;&#x5F55;&#xFF08;Immutable <code>record</code>&#xFF09;API&#x3002;</p>
+<h3 id="properties-and-getters">Properties and Getters</h3>
+<p>&#x5728;&#x591A;&#x6570;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x4E0A;&#x8FF0;&#x5B9E;&#x4F8B;&#x548C;&#x9759;&#x6001;&#x65B9;&#x6CD5;&#x5E94;&#x8DB3;&#x4EE5;&#x7BA1;&#x7406;&#x4F60;Draft&#x7F16;&#x8F91;&#x5668;&#x7684;&#x72B6;&#x6001;&#x3002;</p>
+<p>&#x4EE5;&#x4E0B;&#x662F;&#x7531;<code>EditorState</code>&#x8FFD;&#x8E2A;&#x5C5E;&#x6027;&#x7684;&#x5B8C;&#x6574;&#x5217;&#x8868;&#xFF0C;&#x4EE5;&#x53CA;&#x4ED6;&#x4EEC;&#x76F8;&#x5E94;&#x7684;getter&#x65B9;&#x6CD5;&#xFF0C;&#x6765;&#x66F4;&#x597D;&#x5730;&#x63D0;&#x4F9B;&#x5728;&#x8BE5;&#x5BF9;&#x8C61;&#x4E2D;&#x8DDF;&#x8E2A;&#x72B6;&#x6001;&#x8303;&#x56F4;&#x7684;&#x8BE6;&#x7EC6;&#x4FE1;&#x606F;&#x3002;</p>
+<blockquote>
+<p>&#x6CE8;&#x610F;</p>
+<p>&#x5F53;&#x4F7F;&#x7528;EditorState&#x5BF9;&#x8C61;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4F60;&#x4E0D;&#x5E94;&#x8BE5;&#x4F7F;&#x7528;Immutable&#xFF08;&#x4E0D;&#x53EF;&#x53D8;&#x7684;&#xFF09; API&#xFF0C;&#x800C;&#x662F;&#x4F7F;&#x7528;&#x4E0B;&#x9762;&#x5B9E;&#x4F8B;&#x7684;getters&#x548C;&#x9759;&#x6001;&#x65B9;&#x6CD5;&#x6765;&#x4EE3;&#x66FF;&#x5B83;&#x3002;</p>
+</blockquote>
+<h4 id="allowundo">allowUndo </h4>
+<pre><code class="lang-js">allowUndo: boolean;
+getAllowUndo()
+</code></pre>
+<p>&#x662F;&#x5426;&#x5141;&#x8BB8;&#x7F16;&#x8F91;&#x5668;&#x8FDB;&#x884C;&#x64A4;&#x9500;/&#x91CD;&#x505A;&#x884C;&#x4E3A;&#x3002;&#x9ED8;&#x8BA4;&#x503C;&#x662F;<code>true</code>&#x3002;</p>
+<p>&#x56E0;&#x4E3A;&#x64A4;&#x9500;/&#x91CD;&#x505A;&#x6808;&#x662F;&#x5185;&#x5B58;&#x4FDD;&#x7559;&#x7684;&#x4E3B;&#x8981;&#x6765;&#x6E90;&#xFF0C;&#x5982;&#x679C;&#x4F60;&#x7684;&#x7F16;&#x8F91;&#x5668;&#x4EA4;&#x4E92;&#x4E0D;&#x9700;&#x8981;&#x64A4;&#x9500;/&#x91CD;&#x505A;&#x6808;&#xFF0C;&#x4F60;&#x53EF;&#x80FD;&#x8981;&#x8003;&#x8651;&#x5C06;&#x8FD9;&#x4E2A;&#x503C;&#x8BBE;&#x7F6E;&#x4E3A;<code>false</code>&#x3002;</p>
+<h4 id="currentcontent">currentContent </h4>
+<pre><code class="lang-js">currentContent: ContentState;
+getCurrentContent()
+</code></pre>
+<p>&#x5F53;&#x524D;&#x6E32;&#x67D3;&#x7684;<code>ContentState</code>&#x3002;&#x8BF7;&#x53C2;&#x9605;<a href="#getcurrentcontent">getCurrentContent()</a>&#x3002;</p>
+<h4 id="decorator">decorator </h4>
+<pre><code class="lang-js">decorator: ?DraftDecoratorType;
+getDecorator()
+</code></pre>
+<p>&#x5F53;&#x524D;&#x7684;&#x88C5;&#x9970;&#x5668;&#x5BF9;&#x8C61;&#xFF08;&#x5982;&#x679C;&#x6709;&#x7684;&#x8BDD;&#xFF09;&#x3002;</p>
+<p>&#x6CE8;&#x610F;<code>ContentState</code>&#x662F;&#x72EC;&#x7ACB;&#x4E8E;&#x4F60;&#x7684;&#x88C5;&#x9970;&#x5668;&#x7684;&#x3002;&#x5982;&#x679C;&#x63D0;&#x4F9B;&#x4E86;&#x88C5;&#x9970;&#x5668;&#xFF0C;&#x5B83;&#x5C06;&#x88AB;&#x7528;&#x4E8E;&#x88C5;&#x9970;&#x6E32;&#x67D3;&#x6587;&#x672C;&#x7684;&#x8303;&#x56F4;&#x3002;</p>
+<h4 id="directionmap">directionMap </h4>
+<pre><code class="lang-js">directionMap: BlockMap;
+getDirectionMap()
+</code></pre>
+<p>&#x6BCF;&#x4E2A;&#x5757;&#x53CA;&#x5176;&#x6587;&#x672C;&#x65B9;&#x5411;&#x7684;&#x6620;&#x5C04;&#xFF0C;&#x5B83;&#x7531;UnicodeBidiService&#x786E;&#x5B9A;&#x3002;</p>
+<p>&#x4F60;&#x4E0D;&#x5E94;&#x8BE5;&#x624B;&#x52A8;&#x7BA1;&#x7406;&#x5B83;&#x3002;</p>
+<h4 id="propertyfs">forceSelection </h4>
+<pre><code class="lang-js">forceSelection: boolean;
+mustForceSelection()
+</code></pre>
+<p>&#x662F;&#x5426;&#x5F3A;&#x5236;&#x6E32;&#x67D3;&#x5F53;&#x524D;&#x7684;<code>SelectionState</code>&#x3002;</p>
+<p>&#x4F60;&#x5E94;&#x8BE5;&#x624B;&#x52A8;&#x8BBE;&#x7F6E;&#x8FD9;&#x4E2A;&#x5C5E;&#x6027;&#x3002;--&#x8BF7;&#x53C2;&#x9605;<a href="#forceselection">forceSelection()</a>&#x3002;</p>
+<h4 id="incompositionmode">inCompositionMode </h4>
+<pre><code class="lang-js">inCompositionMode: boolean;
+isInCompositionMode()
+</code></pre>
+<p>&#x7528;&#x6237;&#x662F;&#x5426;&#x5904;&#x4E8E;IME&#x7EC4;&#x5408;&#x6A21;&#x5F0F;&#x3002;&#x8FD9;&#x5BF9;&#x4E3A;IME&#x7528;&#x6237;&#x6E32;&#x67D3;&#x9002;&#x5F53;&#x7684;UI&#x662F;&#x6709;&#x7528;&#x7684;&#xFF0C;&#x5373;&#x4F7F;&#x662F;&#x5728;&#x6CA1;&#x6709;&#x5185;&#x5BB9;&#x6539;&#x53D8;&#x63D0;&#x4EA4;&#x5230;&#x7F16;&#x8F91;&#x5668;&#x7684;&#x65F6;&#x5019;&#x5B83;&#x4E5F;&#x662F;&#x6709;&#x7528;&#x7684;&#x3002;&#x4F60;&#x4E0D;&#x5E94;&#x8BE5;&#x624B;&#x52A8;&#x8BBE;&#x7F6E;&#x8FD9;&#x4E2A;&#x5C5E;&#x6027;&#x3002;</p>
+<h4 id="inlinestyleoverride">inlineStyleOverride </h4>
+<pre><code class="lang-js">inlineStyleOverride: DraftInlineStyle;
+getInlineStyleOverride()
+</code></pre>
+<p>&#x4E0B;&#x4E00;&#x4E2A;&#x63D2;&#x5165;&#x5B57;&#x7B26;&#x5E94;&#x7528;&#x7684;&#x5185;&#x8054;&#x6837;&#x5F0F;&#x503C;&#x3002;&#x5F53;&#x952E;&#x76D8;&#x547D;&#x4EE4;&#x6216;&#x6837;&#x5F0F;&#x6309;&#x94AE;&#x5E94;&#x7528;&#x5230;&#x4E00;&#x4E2A;&#x6298;&#x53E0;&#x9009;&#x62E9;&#x8303;&#x56F4;&#x7684;&#x5185;&#x8054;&#x6837;&#x5F0F;&#x65F6;&#xFF0C;&#x5B83;&#x4F1A;&#x88AB;&#x7528;&#x5230;&#x3002;</p>
+<p><code>DraftInlineStyle</code>&#x662F;&#x4E00;&#x4E2A;&#x4E0D;&#x53EF;&#x53D8;<code>OrderedSet</code>&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x7C7B;&#x578B;&#x522B;&#x540D;&#xFF0C;&#x5176;&#x4E2D;&#x6BCF;&#x4E00;&#x4E2A;&#x90FD;&#x5BF9;&#x5E94;&#x4E00;&#x4E2A;&#x5185;&#x8054;&#x6837;&#x5F0F;&#x3002;</p>
+<h4 id="lastchangetype">lastChangeType </h4>
+<pre><code class="lang-js">lastChangeType: EditorChangeType;
+getLastChangeType()
+</code></pre>
+<p>&#x4E3A;&#x4E86;&#x7ED9;&#x6211;&#x4EEC;&#x5F53;&#x524D;&#x7684;<code>ContentState</code>&#x53D1;&#x751F;&#x5185;&#x5BB9;&#x53D8;&#x5316;&#x7684;&#x7C7B;&#x578B;&#x3002;&#x5F53;&#x786E;&#x5B9A;&#x64A4;&#x9500;/&#x91CD;&#x505A;&#x8FB9;&#x754C;&#x72B6;&#x6001;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x8FD9;&#x4F1A;&#x88AB;&#x7528;&#x5230;&#x3002;</p>
+<h4 id="nativelyrenderedcontent">nativelyRenderedContent </h4>
+<pre><code class="lang-js">nativelyRenderedContent: ?ContentState;
+getNativelyRenderedContent()
+</code></pre>
+<p>&#x5728;&#x7F16;&#x8F91;&#x884C;&#x4E3A;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x7F16;&#x8F91;&#x5668;&#x53EF;&#x80FD;&#x4F1A;&#x5141;&#x8BB8;&#x67D0;&#x4E9B;&#x64CD;&#x4F5C;&#x8FDB;&#x884C;&#x539F;&#x751F;&#x6E32;&#x67D3;&#x3002;&#x4E3E;&#x4E2A;&#x4F8B;&#x5B50;&#xFF0C;&#x5728;&#x57FA;&#x4E8E;contentEditable&#x7EC4;&#x4EF6;&#x4E2D;&#x8FDB;&#x884C;&#x8F93;&#x5165;&#x884C;&#x4E3A;&#x65F6;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x7279;&#x522B;&#x5141;&#x8BB8;&#x5728;DOM&#x4E2D;&#x6253;&#x5370;&#x5B57;&#x7B26;&#x65F6;&#x952E;&#x4E8B;&#x4EF6;&#x5931;&#x8D25;&#x3002;&#x8FD9;&#x6837;&#x505A;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x907F;&#x514D;&#x989D;&#x5916;&#x7684;&#x91CD;&#x7ED8;&#x5E76;&#x7EF4;&#x6301;&#x62FC;&#x5199;&#x68C0;&#x67E5;&#x7684;&#x9AD8;&#x4EAE;&#x3002;</p>
+<p>&#x5F53;&#x5141;&#x8BB8;&#x539F;&#x751F;&#x6E32;&#x67D3;&#x884C;&#x4E3A;&#x65F6;&#xFF0C;&#x4F7F;&#x7528;<code>nativelyRenderedContent</code>&#x5C5E;&#x6027;&#x6765;&#x6307;&#x793A;&#x8FD9;&#x4E2A;<code>EditorState</code>&#x4E0D;&#x9700;&#x8981;&#x91CD;&#x7ED8;&#x3002;</p>
+<h4 id="redostack">redoStack </h4>
+<pre><code class="lang-js">redoStack: Stack&lt;ContentState&gt;;
+getRedoStack()
+</code></pre>
+<p><code>ContentState</code>&#x7684;&#x4E0D;&#x53EF;&#x53D8;&#x5BF9;&#x8C61;&#x6808;&#xFF0C;&#x5728;&#x91CD;&#x505A;&#x64CD;&#x4F5C;&#x7684;&#x65F6;&#x5019;&#x5B83;&#x53EF;&#x4EE5;&#x88AB;&#x6062;&#x590D;&#x3002;&#x5F53;&#x6267;&#x884C;&#x64A4;&#x9500;&#x64CD;&#x4F5C;&#x65F6;&#xFF0C;&#x5F53;&#x524D;&#x7684;<code>ContentState</code>&#x88AB;&#x63A8;&#x5230;<code>redoStack</code>&#x4E2D;&#x3002;</p>
+<p>&#x4F60;&#x4E0D;&#x5E94;&#x8BE5;&#x624B;&#x52A8;&#x7BA1;&#x7406;&#x8FD9;&#x4E2A;&#x5C5E;&#x6027;&#x3002;&#x5982;&#x679C;&#x4F60;&#x60F3;&#x8981;&#x7981;&#x6B62;&#x64A4;&#x9500;/&#x91CD;&#x505A;&#x884C;&#x4E3A;&#xFF0C;&#x4F7F;&#x7528;<code>allowUndo</code>&#x5C5E;&#x6027;&#x3002;</p>
+<p>&#x8BF7;&#x53C2;&#x9605;<a href="#undostack">undoStack</a>&#x3002;</p>
+<h4 id="propertyselection">selection </h4>
+<pre><code class="lang-js">selection: SelectionState;
+getSelection()
+</code></pre>
+<p>&#x5F53;&#x524D;&#x6E32;&#x67D3;&#x7684;<code>SelctionState</code>&#x3002;&#x53C2;&#x9605;<a href="#accepteselection">acceptSelection()</a>&#x548C;<a href="#forceselection">forceSelection()</a>&#x3002;</p>
+<p>&#x4F60;&#x4E0D;&#x5E94;&#x8BE5;&#x624B;&#x52A8;&#x7BA1;&#x7406;&#x8FD9;&#x4E2A;&#x5C5E;&#x6027;&#x3002;</p>
+<h4 id="treemap">treeMap </h4>
+<pre><code class="lang-js">treeMap: OrderedMap&lt;string, List&gt;;
+</code></pre>
+<p>&#x5728;&#x7F16;&#x8F91;&#x5668;&#x7EC4;&#x4EF6;&#x4E2D;&#x6E32;&#x67D3;&#x7684;&#x5B8C;&#x6574;&#x7684;&#x88C5;&#x9970;&#x548C;&#x6837;&#x5F0F;&#x6811;&#x3002;<code>treeMap</code>&#x5BF9;&#x8C61;&#x7531;<code>CotentState</code>&#x548C;&#x4E00;&#x4E2A;&#x53EF;&#x9009;&#x7684;&#x88C5;&#x9970;&#x5668;&#xFF08;<code>DraftDecoratorType</code>&#xFF09;&#x751F;&#x6210;&#x3002;</p>
+<p>&#x5728;&#x6E32;&#x67D3;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x7EC4;&#x4EF6;&#x5E94;&#x8BE5;&#x904D;&#x5386;<code>treeMap</code>&#x5BF9;&#x8C61;&#x4F7F;&#x7528;<a href="#getblocktree">getBlockTree()</a>&#x6765;&#x6E32;&#x67D3;&#x88C5;&#x9970;&#x8303;&#x56F4;&#x548C;&#x6837;&#x5F0F;&#x8303;&#x56F4;&#x3002;</p>
+<p>&#x4F60;&#x4E0D;&#x5E94;&#x8BE5;&#x624B;&#x52A8;&#x7BA1;&#x7406;&#x8FD9;&#x4E2A;&#x5C5E;&#x6027;&#x3002;</p>
+<h4 id="undostack">undoStack </h4>
+<pre><code class="lang-js">undoStack: Stack&lt;ContentState&gt;;
+getUndoStack()
+</code></pre>
+<p><code>ContentState</code>&#x5BF9;&#x8C61;&#x7684;&#x4E00;&#x4E2A;&#x4E0D;&#x53EF;&#x53D8;&#x7684;&#x6808;&#xFF0C;&#x8BE5;&#x6808;&#x53EF;&#x4EE5;&#x88AB;&#x8FD8;&#x539F;&#x4EE5;&#x8FDB;&#x884C;&#x64A4;&#x9500;&#x64CD;&#x4F5C;&#x3002;</p>
+<p>&#x5F53;&#x6267;&#x884C;&#x4FEE;&#x6539;&#x5185;&#x5BB9;&#x7684;&#x64CD;&#x4F5C;&#x65F6;&#xFF0C;&#x6211;&#x4EEC;&#x786E;&#x5B9A;&#x662F;&#x5426;&#x5F53;&#x524D;&#x7684;<code>ContentState</code>&#x662F;&#x5426;&#x5E94;&#x88AB;&#x89C6;&#x4E3A;&#x7528;&#x6237;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x6267;&#x884C;&#x64A4;&#x9500;&#x64CD;&#x4F5C;&#x6765;&#x8FBE;&#x5230;&#x7684;&#x201C;&#x8FB9;&#x754C;&#x201D;&#x72B6;&#x6001;&#x3002;&#x5982;&#x679C;&#x662F;&#x8FD9;&#x6837;&#xFF0C;<code>ContentState</code>&#x4F1A;&#x88AB;&#x63A8;&#x8FDB;<code>undoStack</code>&#xFF08;&#x64A4;&#x9500;&#x6808;&#xFF09;&#x3002;&#x5982;&#x679C;&#x4E0D;&#x662F;&#x8FD9;&#x6837;&#xFF0C;&#x5219;&#x76F4;&#x63A5;&#x4E22;&#x5F03;&#x5373;&#x5C06;&#x6539;&#x53D8;&#x7684;<code>ContentState</code>&#x3002;</p>
+<p>&#x4F60;&#x4E0D;&#x5E94;&#x8BE5;&#x624B;&#x52A8;&#x7BA1;&#x7406;&#x8FD9;&#x4E2A;&#x5C5E;&#x6027;&#x3002;&#x5982;&#x679C;&#x4F60;&#x60F3;&#x7981;&#x6B62;&#x64A4;&#x9500;/&#x91CD;&#x505A;&#x884C;&#x4E3A;&#xFF0C;&#x8BF7;&#x4F7F;&#x7528;<code>allowUndo</code>&#x5C5E;&#x6027;&#x3002;</p>
+<p>&#x8BF7;&#x53C2;&#x9605;<a href="#redostack">redoStack</a>&#x3002;</p>
 
                                 
                                 </section>
@@ -638,7 +876,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"EditorState","level":"1.4.3","depth":2,"next":{"title":"ContentState","level":"1.4.4","depth":2,"path":"apican-kao/contentstate.md","ref":"apican-kao/contentstate.md","articles":[]},"previous":{"title":"EditorChangeType","level":"1.4.2","depth":2,"path":"apican-kao/editorchangetype.md","ref":"apican-kao/editorchangetype.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"apican-kao/editorstate.md","mtime":"2018-10-11T10:39:04.048Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-02T06:49:50.276Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"EditorState","level":"1.4.3","depth":2,"next":{"title":"ContentState","level":"1.4.4","depth":2,"path":"apican-kao/contentstate.md","ref":"apican-kao/contentstate.md","articles":[]},"previous":{"title":"EditorChangeType","level":"1.4.2","depth":2,"path":"apican-kao/editorchangetype.md","ref":"apican-kao/editorchangetype.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"apican-kao/editorstate.md","mtime":"2018-11-02T09:06:40.265Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-02T09:09:59.593Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -646,10 +884,6 @@
         
     <script src="../gitbook/gitbook.js"></script>
     <script src="../gitbook/theme.js"></script>
-    
-        
-        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
-        
     
         
         <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
