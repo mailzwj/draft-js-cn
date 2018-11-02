@@ -16,7 +16,7 @@
 
 ### 概览
 
-_常用的实例方法    
+_常用的实例方法      
 _
 
 下面这个列表包括了EditorState对象最常用的实例方法。
@@ -26,7 +26,7 @@ _
 * [getCurrentInlineStyle\(\): DraftInlineStyle](#getcurrentinlinestyle)
 * [getBlockTree\(\): OrderedMap](#getblocktree)
 
-_静态方法    
+_静态方法      
 _
 
 * [static createWithContent\(contentState, ?decorator\): EditorState](#createwithcontent)
@@ -41,14 +41,14 @@ _
 * [static setInlineStyleOverride\(editorState, inlineStyleOverride\): EditorState](#setinlinestyleoverride)
 * [static set\(editorState, EditorStateRecordType\): EditorState](#setmethods)
 
-_属性    
+_属性      
 _
 
 > 注意
 >
 > 通过`EditorState`静态方法设置属性，而不是直接使用Immutable（不可变的） API。这意味着使用`EditorState.set`去传递EditorState实例新的属性。
 >
-> **例子    
+> **例子      
 > **
 >
 > ```js
@@ -90,8 +90,6 @@ getSelection(): SelectionState
 
 #### getCurrentInlineStyle
 
-{\#getcurrentinlinestyle}
-
 ```js
 getCurrentInlineStyle(): DraftInlineStyle
 ```
@@ -101,8 +99,6 @@ getCurrentInlineStyle(): DraftInlineStyle
 为当前`ContentState`和`SelectionState`插入一个字符，并且考虑任何需要被应用的内联样式重写的时候，这个内联样式的值将会被用到。
 
 #### getBlockTree
-
-{\#getblocktree}
 
 ```js
 getBlockTree(blockKey: string): List;
@@ -116,8 +112,6 @@ getBlockTree(blockKey: string): List;
 
 #### createEmpty
 
-{\#createempty}
-
 ```js
 static createEmpty(decorator?: DraftDecoratorType): EditorState
 ```
@@ -125,8 +119,6 @@ static createEmpty(decorator?: DraftDecoratorType): EditorState
 返回一个有空`ContentState`和默认配置的新的`EditorState`对象。
 
 #### createWithContent
-
-{\#createwithcontent}
 
 ```js
 static createWithContent(
@@ -139,8 +131,6 @@ static createWithContent(
 
 #### create
 
-{\#create}
-
 ```js
 static create(config: EditorStateCreationConfig): EditorState
 ```
@@ -148,8 +138,6 @@ static create(config: EditorStateCreationConfig): EditorState
 基于配置对象返回一个新的`EditorState`对象。如果你需要自定义配置通过上述方法不可用，那你可以使用这个。
 
 #### push
-
-{\#push}
 
 ```js
 static push(
@@ -163,12 +151,10 @@ static push(
 
 必须使用此方法将所有的内容改变应用到EditorState中。
 
-_需要重命名    
+_需要重命名      
 _
 
 #### 撤销（undo）
-
-{\#undo}
 
 ```js
 static undo(editorState: EditorState): EditorState
