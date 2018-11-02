@@ -31,7 +31,7 @@ _方法_
 * [getFirstBlock\(\)](#getfirstblock)
 * [getLastBlock\(\)](#getlastblock)
 * [getPlainText\(delimiter\)](#getplaintext)
-* [getLastCreatedEntityKey\(\)](#getlastcreateentitykey)
+* [getLastCreatedEntityKey\(\)](#getlastcreatedentitykey)
 * [hasText\(\)](#hastext)
 * [createEntity\(...\)](#createentity)
 * [getEntity\(...\)](#getentity)
@@ -52,8 +52,8 @@ _属性_
 > ```
 
 * [blockMap](#blockmap)
-* [selectionBefore](#selectbefore)
-* [selectionAfter](#selectafter)
+* [selectionBefore](#selectionbefore)
+* [selectionAfter](#selectionafter)
 
 ### 静态方法
 
